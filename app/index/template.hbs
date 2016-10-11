@@ -1,17 +1,28 @@
 <div class="content row">
-  <div class='col l3 m3 hide-on-small-and-down side-bar z-depth-2'>
+  <div class='side-bar col l2 m4 hide-on-small-and-down side-bar z-depth-2'>
     <form {{action 'add' newRepo on='submit'}}>
     <h5>Filters</h5>
+    <div class='divider'></div>
       {{md-input
         value=newRepo
         label='Repository'
-        validate=true
-        errors=errorList
       }}
+      <p class="range-field">
+        Version range
+        <input type="range" id="test5" min="0" max="100" />
+      </p>
+      <p>
+        <input type="checkbox" id="beta" checked="checked" />
+        <label for="beta">Beta Versions</label>
+      </p>
+      <p>
+        <input type="checkbox" id="filterX" checked="checked" />
+        <label for="filterX">Filter X</label>
+      </p>
   </form>
 
   </div>
-  <div class='col l9 m9 s12'>
+  <div class='content overflow col l10 m8 s12'>
     <div class='row'>
       {{#each model as |repo|}}
         <div class='col s12 m6 l4'>
