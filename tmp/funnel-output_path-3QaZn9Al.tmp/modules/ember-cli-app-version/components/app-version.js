@@ -1,1 +1,0 @@
-/Users/nlewanow/Documents/artic-demo/tmp/funnel-input_base_path-njrEYbDn.tmp/0/components/app-version.js
