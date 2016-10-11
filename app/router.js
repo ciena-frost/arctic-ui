@@ -7,15 +7,13 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('login');
+  this.route('login')
 
-  this.route('repositories', function() {
-    this.route('repository', {path: ':id' },function() {
-      this.route('info');
-    });
-  });
-  this.route('repository', {path: ':id' },function() {
-  });
+  this.route('repositories', function () {
+    this.route('repository', {path: ':id'}, function () {
+      this.route('info')
+    })
+  })
 });
 
 export default Router;

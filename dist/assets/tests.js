@@ -4,7 +4,7 @@ define('artic-demo/tests/app.jshint', ['exports'], function (exports) {
   QUnit.module('JSHint | app.js');
   QUnit.test('should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(true, 'app.js should pass jshint.');
+    assert.ok(false, 'app.js should pass jshint.\napp.js: line 1, col 1, \'import\' is only available in ES6 (use \'esversion: 6\').\napp.js: line 2, col 1, \'import\' is only available in ES6 (use \'esversion: 6\').\napp.js: line 3, col 1, \'import\' is only available in ES6 (use \'esversion: 6\').\napp.js: line 4, col 1, \'import\' is only available in ES6 (use \'esversion: 6\').\napp.js: line 6, col 1, \'let\' is available in ES6 (use \'esversion: 6\') or Mozilla JS extensions (use moz).\napp.js: line 13, col 3, \'object short notation\' is available in ES6 (use \'esversion: 6\') or Mozilla JS extensions (use moz).\napp.js: line 18, col 1, \'export\' is only available in ES6 (use \'esversion: 6\').\n\n7 errors');
   });
 });
 define('artic-demo/tests/application/adapter.jshint', ['exports'], function (exports) {
@@ -13,16 +13,7 @@ define('artic-demo/tests/application/adapter.jshint', ['exports'], function (exp
   QUnit.module('JSHint | application/adapter.js');
   QUnit.test('should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(true, 'application/adapter.js should pass jshint.');
-  });
-});
-define('artic-demo/tests/application/route.jshint', ['exports'], function (exports) {
-  'use strict';
-
-  QUnit.module('JSHint | application/route.js');
-  QUnit.test('should pass jshint', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'application/route.js should pass jshint.');
+    assert.ok(false, 'application/adapter.js should pass jshint.\napplication/adapter.js: line 1, col 1, \'import\' is only available in ES6 (use \'esversion: 6\').\napplication/adapter.js: line 2, col 1, \'import\' is only available in ES6 (use \'esversion: 6\').\napplication/adapter.js: line 3, col 1, \'export\' is only available in ES6 (use \'esversion: 6\').\n\n3 errors');
   });
 });
 define('artic-demo/tests/application/serializer.jshint', ['exports'], function (exports) {
@@ -31,25 +22,7 @@ define('artic-demo/tests/application/serializer.jshint', ['exports'], function (
   QUnit.module('JSHint | application/serializer.js');
   QUnit.test('should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(true, 'application/serializer.js should pass jshint.');
-  });
-});
-define('artic-demo/tests/components/repo-list/component.jshint', ['exports'], function (exports) {
-  'use strict';
-
-  QUnit.module('JSHint | components/repo-list/component.js');
-  QUnit.test('should pass jshint', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'components/repo-list/component.js should pass jshint.');
-  });
-});
-define('artic-demo/tests/dashboard/route.jshint', ['exports'], function (exports) {
-  'use strict';
-
-  QUnit.module('JSHint | dashboard/route.js');
-  QUnit.test('should pass jshint', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'dashboard/route.js should pass jshint.');
+    assert.ok(false, 'application/serializer.js should pass jshint.\napplication/serializer.js: line 1, col 1, \'import\' is only available in ES6 (use \'esversion: 6\').\napplication/serializer.js: line 3, col 1, \'export\' is only available in ES6 (use \'esversion: 6\').\n\n2 errors');
   });
 });
 define('artic-demo/tests/helpers/async-helper', ['exports', 'ember'], function (exports, _ember) {
@@ -84,6 +57,36 @@ define('artic-demo/tests/helpers/destroy-app.jshint', ['exports'], function (exp
     assert.expect(1);
     assert.ok(true, 'helpers/destroy-app.js should pass jshint.');
   });
+});
+define('artic-demo/tests/helpers/ember-keyboard/register-test-helpers', ['exports', 'ember', 'ember-keyboard'], function (exports, _ember, _emberKeyboard) {
+
+  var keyEvent = function keyEvent(app, attributes, type) {
+    var event = attributes.split('+').reduce(function (event, attribute) {
+      if (['ctrl', 'meta', 'alt', 'shift'].indexOf(attribute) > -1) {
+        event[attribute + 'Key'] = true;
+      } else {
+        event.keyCode = (0, _emberKeyboard.getKeyCode)(attribute);
+      }
+
+      return event;
+    }, {});
+
+    return app.testHelpers.triggerEvent(document, type, event);
+  };
+
+  exports['default'] = function () {
+    _ember['default'].Test.registerAsyncHelper('keyDown', function (app, attributes) {
+      return keyEvent(app, attributes, 'keydown');
+    });
+
+    _ember['default'].Test.registerAsyncHelper('keyUp', function (app, attributes) {
+      return keyEvent(app, attributes, 'keyup');
+    });
+
+    _ember['default'].Test.registerAsyncHelper('keyPress', function (app, attributes) {
+      return keyEvent(app, attributes, 'keypress');
+    });
+  };
 });
 define('artic-demo/tests/helpers/module-for-acceptance', ['exports', 'qunit', 'ember', 'artic-demo/tests/helpers/start-app', 'artic-demo/tests/helpers/destroy-app'], function (exports, _qunit, _ember, _articDemoTestsHelpersStartApp, _articDemoTestsHelpersDestroyApp) {
   var Promise = _ember['default'].RSVP.Promise;
@@ -173,7 +176,7 @@ define('artic-demo/tests/index/controller.jshint', ['exports'], function (export
   QUnit.module('JSHint | index/controller.js');
   QUnit.test('should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(false, 'index/controller.js should pass jshint.\nindex/controller.js: line 2, col 8, \'ENV\' is defined but never used.\n\n1 error');
+    assert.ok(false, 'index/controller.js should pass jshint.\nindex/controller.js: line 1, col 1, \'import\' is only available in ES6 (use \'esversion: 6\').\nindex/controller.js: line 2, col 1, \'const\' is available in ES6 (use \'esversion: 6\') or Mozilla JS extensions (use moz).\nindex/controller.js: line 2, col 1, \'destructuring binding\' is available in ES6 (use \'esversion: 6\') or Mozilla JS extensions (use moz).\nindex/controller.js: line 9, col 10, Missing semicolon.\nindex/controller.js: line 11, col 1, \'export\' is only available in ES6 (use \'esversion: 6\').\nindex/controller.js: line 15, col 58, Missing semicolon.\nindex/controller.js: line 17, col 35, Missing semicolon.\nindex/controller.js: line 19, col 3, Missing semicolon.\n\n8 errors');
   });
 });
 define('artic-demo/tests/index/route.jshint', ['exports'], function (exports) {
@@ -182,7 +185,7 @@ define('artic-demo/tests/index/route.jshint', ['exports'], function (exports) {
   QUnit.module('JSHint | index/route.js');
   QUnit.test('should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(false, 'index/route.js should pass jshint.\nindex/route.js: line 8, col 26, Missing semicolon.\nindex/route.js: line 22, col 24, Missing semicolon.\nindex/route.js: line 2, col 8, \'repository\' is defined but never used.\nindex/route.js: line 3, col 8, \'ENV\' is defined but never used.\n\n4 errors');
+    assert.ok(false, 'index/route.js should pass jshint.\nindex/route.js: line 1, col 1, \'import\' is only available in ES6 (use \'esversion: 6\').\nindex/route.js: line 1, col 26, Missing semicolon.\nindex/route.js: line 3, col 1, \'const\' is available in ES6 (use \'esversion: 6\') or Mozilla JS extensions (use moz).\nindex/route.js: line 3, col 1, \'destructuring binding\' is available in ES6 (use \'esversion: 6\') or Mozilla JS extensions (use moz).\nindex/route.js: line 6, col 10, Missing semicolon.\nindex/route.js: line 7, col 1, \'export\' is only available in ES6 (use \'esversion: 6\').\nindex/route.js: line 8, col 3, \'concise methods\' is available in ES6 (use \'esversion: 6\') or Mozilla JS extensions (use moz).\nindex/route.js: line 12, col 5, \'concise methods\' is available in ES6 (use \'esversion: 6\') or Mozilla JS extensions (use moz).\nindex/route.js: line 13, col 7, \'const\' is available in ES6 (use \'esversion: 6\') or Mozilla JS extensions (use moz).\nindex/route.js: line 13, col 59, Missing semicolon.\nindex/route.js: line 14, col 54, \'object short notation\' is available in ES6 (use \'esversion: 6\') or Mozilla JS extensions (use moz).\nindex/route.js: line 14, col 67, Missing semicolon.\n\n12 errors');
   });
 });
 define('artic-demo/tests/integration/components/repo-list/component-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
@@ -331,7 +334,16 @@ define('artic-demo/tests/login/route.jshint', ['exports'], function (exports) {
   QUnit.module('JSHint | login/route.js');
   QUnit.test('should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(true, 'login/route.js should pass jshint.');
+    assert.ok(false, 'login/route.js should pass jshint.\nlogin/route.js: line 1, col 1, \'import\' is only available in ES6 (use \'esversion: 6\').\nlogin/route.js: line 3, col 1, \'export\' is only available in ES6 (use \'esversion: 6\').\n\n2 errors');
+  });
+});
+define('artic-demo/tests/models/dependency.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint | models/dependency.js');
+  QUnit.test('should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(false, 'models/dependency.js should pass jshint.\nmodels/dependency.js: line 1, col 1, \'import\' is only available in ES6 (use \'esversion: 6\').\nmodels/dependency.js: line 3, col 1, \'const\' is available in ES6 (use \'esversion: 6\') or Mozilla JS extensions (use moz).\nmodels/dependency.js: line 3, col 1, \'destructuring binding\' is available in ES6 (use \'esversion: 6\') or Mozilla JS extensions (use moz).\nmodels/dependency.js: line 6, col 7, Missing semicolon.\nmodels/dependency.js: line 7, col 1, \'export\' is only available in ES6 (use \'esversion: 6\').\nmodels/dependency.js: line 9, col 3, Missing semicolon.\n\n6 errors');
   });
 });
 define('artic-demo/tests/models/project.jshint', ['exports'], function (exports) {
@@ -340,7 +352,7 @@ define('artic-demo/tests/models/project.jshint', ['exports'], function (exports)
   QUnit.module('JSHint | models/project.js');
   QUnit.test('should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(true, 'models/project.js should pass jshint.');
+    assert.ok(false, 'models/project.js should pass jshint.\nmodels/project.js: line 1, col 1, \'import\' is only available in ES6 (use \'esversion: 6\').\nmodels/project.js: line 3, col 1, \'const\' is available in ES6 (use \'esversion: 6\') or Mozilla JS extensions (use moz).\nmodels/project.js: line 3, col 1, \'destructuring binding\' is available in ES6 (use \'esversion: 6\') or Mozilla JS extensions (use moz).\nmodels/project.js: line 7, col 7, Missing semicolon.\nmodels/project.js: line 9, col 1, \'export\' is only available in ES6 (use \'esversion: 6\').\nmodels/project.js: line 12, col 3, Missing semicolon.\n\n6 errors');
   });
 });
 define('artic-demo/tests/models/repository.jshint', ['exports'], function (exports) {
@@ -349,7 +361,7 @@ define('artic-demo/tests/models/repository.jshint', ['exports'], function (expor
   QUnit.module('JSHint | models/repository.js');
   QUnit.test('should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(true, 'models/repository.js should pass jshint.');
+    assert.ok(false, 'models/repository.js should pass jshint.\nmodels/repository.js: line 1, col 1, \'import\' is only available in ES6 (use \'esversion: 6\').\nmodels/repository.js: line 3, col 1, \'const\' is available in ES6 (use \'esversion: 6\') or Mozilla JS extensions (use moz).\nmodels/repository.js: line 3, col 1, \'destructuring binding\' is available in ES6 (use \'esversion: 6\') or Mozilla JS extensions (use moz).\nmodels/repository.js: line 7, col 7, Missing semicolon.\nmodels/repository.js: line 9, col 1, \'export\' is only available in ES6 (use \'esversion: 6\').\nmodels/repository.js: line 19, col 3, Missing semicolon.\n\n6 errors');
   });
 });
 define('artic-demo/tests/repositories/index/route.jshint', ['exports'], function (exports) {
@@ -358,7 +370,7 @@ define('artic-demo/tests/repositories/index/route.jshint', ['exports'], function
   QUnit.module('JSHint | repositories/index/route.js');
   QUnit.test('should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(false, 'repositories/index/route.js should pass jshint.\nrepositories/index/route.js: line 14, col 24, Missing semicolon.\n\n1 error');
+    assert.ok(false, 'repositories/index/route.js should pass jshint.\nrepositories/index/route.js: line 1, col 1, \'import\' is only available in ES6 (use \'esversion: 6\').\nrepositories/index/route.js: line 3, col 1, \'export\' is only available in ES6 (use \'esversion: 6\').\nrepositories/index/route.js: line 9, col 7, \'const\' is available in ES6 (use \'esversion: 6\') or Mozilla JS extensions (use moz).\nrepositories/index/route.js: line 14, col 24, Missing semicolon.\n\n4 errors');
   });
 });
 define('artic-demo/tests/repositories/repository/route.jshint', ['exports'], function (exports) {
@@ -367,7 +379,7 @@ define('artic-demo/tests/repositories/repository/route.jshint', ['exports'], fun
   QUnit.module('JSHint | repositories/repository/route.js');
   QUnit.test('should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(false, 'repositories/repository/route.js should pass jshint.\nrepositories/repository/route.js: line 6, col 18, Missing semicolon.\n\n1 error');
+    assert.ok(false, 'repositories/repository/route.js should pass jshint.\nrepositories/repository/route.js: line 1, col 1, \'import\' is only available in ES6 (use \'esversion: 6\').\nrepositories/repository/route.js: line 3, col 1, \'const\' is available in ES6 (use \'esversion: 6\') or Mozilla JS extensions (use moz).\nrepositories/repository/route.js: line 3, col 1, \'destructuring binding\' is available in ES6 (use \'esversion: 6\') or Mozilla JS extensions (use moz).\nrepositories/repository/route.js: line 6, col 10, Missing semicolon.\nrepositories/repository/route.js: line 8, col 1, \'export\' is only available in ES6 (use \'esversion: 6\').\nrepositories/repository/route.js: line 9, col 3, \'concise methods\' is available in ES6 (use \'esversion: 6\') or Mozilla JS extensions (use moz).\nrepositories/repository/route.js: line 12, col 3, Missing semicolon.\n\n7 errors');
   });
 });
 define('artic-demo/tests/repositories/route.jshint', ['exports'], function (exports) {
@@ -376,16 +388,7 @@ define('artic-demo/tests/repositories/route.jshint', ['exports'], function (expo
   QUnit.module('JSHint | repositories/route.js');
   QUnit.test('should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(false, 'repositories/route.js should pass jshint.\nrepositories/route.js: line 8, col 26, Missing semicolon.\nrepositories/route.js: line 20, col 24, Missing semicolon.\nrepositories/route.js: line 2, col 8, \'repository\' is defined but never used.\nrepositories/route.js: line 3, col 8, \'ENV\' is defined but never used.\n\n4 errors');
-  });
-});
-define('artic-demo/tests/repository/route.jshint', ['exports'], function (exports) {
-  'use strict';
-
-  QUnit.module('JSHint | repository/route.js');
-  QUnit.test('should pass jshint', function (assert) {
-    assert.expect(1);
-    assert.ok(false, 'repository/route.js should pass jshint.\nrepository/route.js: line 6, col 18, Missing semicolon.\n\n1 error');
+    assert.ok(false, 'repositories/route.js should pass jshint.\nrepositories/route.js: line 1, col 1, \'import\' is only available in ES6 (use \'esversion: 6\').\nrepositories/route.js: line 2, col 1, \'import\' is only available in ES6 (use \'esversion: 6\').\nrepositories/route.js: line 3, col 1, \'import\' is only available in ES6 (use \'esversion: 6\').\nrepositories/route.js: line 5, col 1, \'export\' is only available in ES6 (use \'esversion: 6\').\nrepositories/route.js: line 8, col 26, Missing semicolon.\nrepositories/route.js: line 15, col 7, \'const\' is available in ES6 (use \'esversion: 6\') or Mozilla JS extensions (use moz).\nrepositories/route.js: line 20, col 24, Missing semicolon.\n\n7 errors');
   });
 });
 define('artic-demo/tests/resolver.jshint', ['exports'], function (exports) {
@@ -394,7 +397,7 @@ define('artic-demo/tests/resolver.jshint', ['exports'], function (exports) {
   QUnit.module('JSHint | resolver.js');
   QUnit.test('should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(true, 'resolver.js should pass jshint.');
+    assert.ok(false, 'resolver.js should pass jshint.\nresolver.js: line 1, col 1, \'import\' is only available in ES6 (use \'esversion: 6\').\nresolver.js: line 3, col 1, \'export\' is only available in ES6 (use \'esversion: 6\').\n\n2 errors');
   });
 });
 define('artic-demo/tests/router.jshint', ['exports'], function (exports) {
@@ -403,7 +406,7 @@ define('artic-demo/tests/router.jshint', ['exports'], function (exports) {
   QUnit.module('JSHint | router.js');
   QUnit.test('should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(true, 'router.js should pass jshint.');
+    assert.ok(false, 'router.js should pass jshint.\nrouter.js: line 1, col 1, \'import\' is only available in ES6 (use \'esversion: 6\').\nrouter.js: line 2, col 1, \'import\' is only available in ES6 (use \'esversion: 6\').\nrouter.js: line 4, col 1, \'const\' is available in ES6 (use \'esversion: 6\') or Mozilla JS extensions (use moz).\nrouter.js: line 10, col 22, Missing semicolon.\nrouter.js: line 14, col 25, Missing semicolon.\nrouter.js: line 15, col 7, Missing semicolon.\nrouter.js: line 16, col 5, Missing semicolon.\nrouter.js: line 19, col 1, \'export\' is only available in ES6 (use \'esversion: 6\').\n\n8 errors');
   });
 });
 define('artic-demo/tests/test-helper', ['exports', 'artic-demo/tests/helpers/resolver', 'ember-qunit'], function (exports, _articDemoTestsHelpersResolver, _emberQunit) {
@@ -506,27 +509,6 @@ define('artic-demo/tests/unit/application/serializer-test.jshint', ['exports'], 
   QUnit.test('should pass jshint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'unit/application/serializer-test.js should pass jshint.');
-  });
-});
-define('artic-demo/tests/unit/dashboard/route-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
-
-  (0, _emberQunit.moduleFor)('route:dashboard', 'Unit | Route | dashboard', {
-    // Specify the other units that are required for this test.
-    // needs: ['controller:foo']
-  });
-
-  (0, _emberQunit.test)('it exists', function (assert) {
-    var route = this.subject();
-    assert.ok(route);
-  });
-});
-define('artic-demo/tests/unit/dashboard/route-test.jshint', ['exports'], function (exports) {
-  'use strict';
-
-  QUnit.module('JSHint | unit/dashboard/route-test.js');
-  QUnit.test('should pass jshint', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/dashboard/route-test.js should pass jshint.');
   });
 });
 define('artic-demo/tests/unit/dependencies/model-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {

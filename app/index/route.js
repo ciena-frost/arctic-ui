@@ -1,26 +1,17 @@
-import Ember from 'ember';
-import repository from '../models/repository';
-import ENV from '../config/environment';
+import Ember from 'ember'
 
-export default Ember.Route.extend({
-  model: function() {
-    var repositories = this.store.findAll('repository');
-      return repositories
+const {
+  Route,
+  get
+} = Ember
+export default Route.extend({
+  model () {
+    return get(this, 'store').findAll('repository');
 	},
-
-
-
   actions: {
-    addProject: function(){
-      var inputUrl = (this.get('controller').get('projectUrl'));
-      //Store the data ar a projectlink model
-      const projectObj = this.store.createRecord('repository', {
-        link: inputUrl,
-      });
-
-      //Save the model to the database
-      projectObj.save()
-    },
-
+    add () {
+      const link = (this.get('controller').get('newRepo'))
+      get(this, 'store').createRecord('repository', {link}).save()
+    }
   }
 });

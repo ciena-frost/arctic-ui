@@ -1,0 +1,28 @@
+// Fix for Roboto font path
+$roboto-font-path: '../assets/';
+
+// Materialize styles
+@import "materialize";
+@import "ember-cli-materialize";
+
+html, body.ember-application, body .ember-view {
+  height: 100%;
+  .row {
+    margin-bottom: 0;
+    height: inherit;
+    .col {
+      height: inherit;
+      h5 {
+        font-size: 1.4rem;
+      }
+      input {
+        height: 2.8rem;
+      }
+    }
+  }
+  .nav-wrapper {
+    .brand-logo {
+      padding-left: 15px;
+    }
+  }
+}
