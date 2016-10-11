@@ -8,9 +8,8 @@
           <h5>Version: {{repo.version}}</h5>
           <h5>Description: {{repo.description}}</h5>
           <h5>Dependencies:<br />
-            {{log repo.dependency}}
-            {{#each item in repo.dependency}}
-               - {{#link-to }} {{item}} {{/link-to}} <br />
+            {{#each repo.dependencies.content as |item|}}
+               - {{#link-to }} {{item.id}} {{/link-to}} <br />
             {{/each}}
           </h5>
           <h5>Developer Dependencies:<br />

@@ -4,13 +4,9 @@
   <h5>Version: {{model.version}}</h5>
   <h5>Description: {{model.description}}</h5>
   <h5>Dependencies:<br />
-    {{#each model.dependencies as |item|}}
+    {{#each model.dependpencies as |item|}}
        - {{#link-to }} {{item}} {{/link-to}} <br />
     {{/each}}
   </h5>
-  <h5>Developer Dependencies:<br />
-    {{#each model.devdependencies as |item|}}
-       - {{item}}<br />
-    {{/each}}
-  </h5>
+
 </div>

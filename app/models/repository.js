@@ -6,7 +6,5 @@ export default DS.Model.extend({
   name: DS.attr('string'),
   version: DS.attr('string'),
   description: DS.attr('string'),
-  isdependency: DS.hasMany('repository', {inverse: 'dependency'}),
-  dependency: DS.hasMany('repository', {inverse: 'isdependency'}),
-
+  dependencies: DS.hasMany('dependency', {inverse: null}),
 });
