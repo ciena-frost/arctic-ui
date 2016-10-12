@@ -6,7 +6,7 @@ const {
 } = DS
 
 export default JSONAPISerializer.extend({
-  primaryKey: ENV['ember-cli-mirage'] ? 'id' : '_id',
+  primaryKey: '_id',
   serializeId (id) {
     return id.toString()
   }

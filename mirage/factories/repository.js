@@ -12,6 +12,7 @@ const {
   }
 } = faker
 export default Factory.extend({
+  version: "0.0.1",
   id () {
     return `${first().toLowerCase()}-${color()}-${last().toLowerCase()}@0.0.1`
   },
@@ -27,6 +28,5 @@ export default Factory.extend({
   },
   link () {
     return `http://github.com/${this.user}/${this.id}`
-  },
-  version: "0.0.1"
+  }
 });
