@@ -13,7 +13,9 @@ export default Model.extend({
   version: attr('string'),
   description: attr('string'),
   dependencies: hasMany('dependency', {
-    async: true,
+    inverse: false
+  }),
+  devdependencies: hasMany('dependency', {
     inverse: false
   })
 })

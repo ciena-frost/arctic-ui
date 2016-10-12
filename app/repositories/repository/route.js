@@ -6,7 +6,8 @@ const {
 } = Ember
 
 export default Route.extend({
-  model (params) {
-    return get(this, 'store').find('repository', params.id);
+  model: function(params) {
+    var repo = this.store.find('repository', params.id);
+    return repo
   }
 })

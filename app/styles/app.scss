@@ -11,6 +11,13 @@ html, body.ember-application, body {
   .ember-view {
     height: inherit;
   }
+  .card.small{
+    height: 200px;
+    width: 800px;
+  }
+  .card-action{
+    font-size: .8em
+  }
   .content {
     height: inherit;
     &.overflow {
@@ -35,5 +42,8 @@ html, body.ember-application, body {
     .brand-logo {
       padding-left: 15px;
     }
+  }
+  .card-title {
+    text-transform: capitalize;
   }
 }

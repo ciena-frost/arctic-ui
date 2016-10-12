@@ -1,13 +1,12 @@
 import Ember from 'ember';
+import repository from '../models/repository';
+import ENV from '../config/environment';
 
-const {
-  Route
-} = Ember
-
-export default Route.extend({
+export default Ember.Route.extend({
   model: function() {
-    var repositories = this.store.findAll('repository')
-	},
+    var repositories = this.store.findAll('repository');
+      return repositories
+  },
 
   actions: {
     addProject: function(){

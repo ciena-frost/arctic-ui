@@ -5,5 +5,6 @@ const {
   attr
 } = DS
 export default Model.extend({
+  name: attr('string'),
   version: attr('string')
 })
