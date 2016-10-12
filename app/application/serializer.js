@@ -1,8 +1,13 @@
 import DS from 'ember-data';
+import ENV from '../config/environment'
 
-export default DS.JSONAPISerializer.extend({
-  primaryKey: '_id',
-  serializeId: function(id) {
-    return id.toString();
+const {
+  JSONAPISerializer
+} = DS
+
+export default JSONAPISerializer.extend({
+  primaryKey: ENV['ember-cli-mirage'] ? 'id' : '_id',
+  serializeId (id) {
+    return id.toString()
   }
-});
+})

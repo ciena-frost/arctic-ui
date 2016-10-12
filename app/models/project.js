@@ -1,7 +1,7 @@
 import DS from 'ember-data';
 
 const {
-  Mode,
+  Model,
   attr,
   hasMany
 } = DS
