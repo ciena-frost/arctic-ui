@@ -39,11 +39,13 @@ html, body.ember-application, body {
     }
   }
   .nav-wrapper {
+    background-color: #26a69a;
     .brand-logo {
       padding-left: 15px;
     }
   }
+
   .card-title {
-    text-transform: capitalize;
+    text-transform: lowercase;
   }
 }

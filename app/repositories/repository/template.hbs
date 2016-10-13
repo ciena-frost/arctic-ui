@@ -16,7 +16,7 @@
                 <p>{{dep.version}}</p>
               </div>
               <div class="card-action">
-                <a href='/repositories/{{dep.id}}'>More Details</a>
+                {{#link-to 'repositories.repository' dep.id}}More Details{{/link-to}}
               </div>
             </div>
           </div>
@@ -32,7 +32,7 @@
                 <p>{{dep.version}}</p>
               </div>
               <div class="card-action">
-                <a href='/repositories/{{dep.id}}'>More Details</a>
+                {{#link-to 'repositories.repository' dep.id}}More Details{{/link-to}}
               </div>
             </div>
           </div>
