@@ -6,7 +6,7 @@ export default Ember.Route.extend({
   model: function() {
     var repositories = this.store.findAll('repository');
       return repositories
-	},
+  },
 
   actions: {
     addProject: function(){

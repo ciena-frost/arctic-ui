@@ -1,1 +1,0 @@
-/Users/nlewanow/Documents/artic-demo/tmp/broccoli_merge_trees-input_base_path-illVkYrR.tmp/18/initializers/export-application-global.js

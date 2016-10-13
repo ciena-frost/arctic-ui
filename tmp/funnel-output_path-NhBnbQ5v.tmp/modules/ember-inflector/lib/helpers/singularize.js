@@ -1,1 +1,0 @@
-/Users/nlewanow/Documents/artic-demo/tmp/funnel-input_base_path-QUJy2JBv.tmp/0/lib/helpers/singularize.js

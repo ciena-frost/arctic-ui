@@ -1,6 +1,12 @@
 import DS from 'ember-data';
 
-export default DS.Model.extend({
-  name: DS.attr('string'),
-  repos: DS.hasMany('repositories'),
-});
+const {
+  Model,
+  attr,
+  hasMany
+} = DS
+
+export default Model.extend({
+  name: attr('string'),
+  repos: hasMany('repositories')
+})

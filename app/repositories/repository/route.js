@@ -1,12 +1,12 @@
 import Ember from 'ember';
 
-export default Ember.Route.extend({
-  model: function(params) {
-    var repo = this.store.find('repository', params.id);
+const {
+  Route,
+  get
+} = Ember
 
-      return repo
-  },
-
-
-
-});
+export default Route.extend({
+  model (params) {
+    return get(this, 'store').find('repository', params.id)
+  }
+})
