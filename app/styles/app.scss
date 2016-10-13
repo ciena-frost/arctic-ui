@@ -1,0 +1,51 @@
+// Fix for Roboto font path
+$roboto-font-path: '../assets/';
+
+// Materialize styles
+@import "materialize";
+@import "ember-cli-materialize";
+
+html, body.ember-application, body {
+  height: 100%;
+  overflow: hidden;
+  .ember-view {
+    height: inherit;
+  }
+  .card.small{
+    height: 200px;
+    width: 800px;
+  }
+  .card-action{
+    font-size: .8em
+  }
+  .content {
+    height: inherit;
+    &.overflow {
+      overflow-y: scroll;
+      .row {
+        margin-bottom: 5rem;
+      }
+    }
+    .side-bar {
+      height: inherit;
+      h5 {
+        font-size: 1.4rem;
+      }
+      .input-field {
+        input {
+          height: 2.8rem;
+        }
+      }
+    }
+  }
+  .nav-wrapper {
+    background-color: #26a69a;
+    .brand-logo {
+      padding-left: 15px;
+    }
+  }
+
+  .card-title {
+    text-transform: lowercase;
+  }
+}
