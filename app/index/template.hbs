@@ -2,39 +2,36 @@
   <div class='side-bar col l2 m4 hide-on-small-and-down side-bar z-depth-2'>
     <form>
       <h5>Filters</h5>
-      {{md-input
-        value=repoFilter
-        label='Repository'
-      }}
-      <p class="range-field">
-        Version range
-        <input type="range" id="test5" min="0" max="100" />
-      </p>
-      <p>
-        <input type="checkbox" id="beta" checked="checked" />
-        <label for="beta">Beta Versions</label>
-      </p>
-      <p>
-        <input type="checkbox" id="filterX" checked="checked" />
-        <label for="filterX">Filter X</label>
-      </p>
+      {{md-input value=repoFilter label='Repository'}}
+      {{md-check name="Ciena Frost" checked=ciena-frost}}
+      {{md-check name="Ciena BluePlanet" checked=ciena-blueplanet}}
+      {{md-check name="BluePlanet Frost" checked=bp-frost}}
+      {{md-check name="BluePlanet UI Apps" checked=bp-ui-apps}}
+      <!-- {{#md-radios selection='' optionValuePath='value' optionLabelPath='Oranization Names'}}
+        <p>{{md-radio value=ciena-frost name="Ciena Frost"}}</p>
+        <p>{{md-radio value=bp-frost name="BluePlanet Frost"}}</p>
+        <p>{{md-radio value=bp-ui-apps name="BluePlanet UI Apps"}}</p>
+      {{/md-radios}} -->
+
     </form>
 
   </div>
-  <div class='content overflow col l10 m8 s12'>
+
     <div class='row'>
+      <div class='content overflow col l10 m8 s12'>
       {{#each filteredModel as |repo|}}
-        <div class='col s12 m6 l4'>
-          <div class='card blue-grey darken-1'>
+        <div class='col s12 m6 l3'>
+          {{#link-to 'repositories.repository' repo.id}}
+          <div class='wave-effect waves-dark card small blue-grey darken-1'>
             <div class="card-content white-text">
-              <span class="card-title">{{repo.name}}</span>
-              <p>{{repo.description}}</p>
+              <span class="card-title-main">{{repo.id}}</span>
+              <p class=truncate>{{repo.description}}</p>
             </div>
-            <div class="card-action">
-              <a href='{{repo.demoURL}}' target='_blank'>Demo</a>
-              {{#link-to 'repositories.repository' repo.id}}More Details{{/link-to}}
+            <div class="card-action center-align">
+              <a href='{{repo.link}}' target='_blank'>{{repo.source}}External Link</a>
             </div>
           </div>
+          {{/link-to}}
         </div>
       {{/each}}
     </div>

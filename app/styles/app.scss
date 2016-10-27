@@ -9,25 +9,40 @@ html, body.ember-application, body {
   height: 100%;
   overflow: hidden;
   .ember-view {
-    height: inherit;
   }
   .card.small{
-    height: 200px;
-    width: 800px;
+    font-size: 0.8em;
+    height: 90px;
+    min-width: 130px;
+    max-width: 550px;
+    padding-top: 8px;
+    padding-left: 8px;
+  }
+  .card.small.tall{
+    height: 150px;
+    width: 200px;
+  }
+  .card.small .card-content {
+    padding: 10px;
+    max-height: 100%;
   }
   .card-action{
     font-size: .8em
   }
+
   .content {
     height: inherit;
     &.overflow {
+      height: 94VH;
       overflow-y: scroll;
       .row {
         margin-bottom: 5rem;
       }
+      .col{
+      }
     }
     .side-bar {
-      height: inherit;
+      height: 100VH;
       h5 {
         font-size: 1.4rem;
       }
@@ -45,7 +60,27 @@ html, body.ember-application, body {
     }
   }
 
-  .card-title {
-    text-transform: lowercase;
+  .card-title-main {
+    margin-top: auto;
+    margin-bottom: 0px;
+    padding: 5px;
+    text-transform:capitalize;
+    font-size: 1.2em;
+    color: white;
+    line-height: 10px;
+
+  }
+  .card-title-small {
+    margin-top: auto;
+    margin-bottom: 0px;
+    padding: 5px;
+    text-transform:capitalize;
+    font-size: 1.3em;
+    line-height: 10px;
+    font-style: bold;
+
+  }
+  .card-action {
+    padding: 4px;
   }
 }

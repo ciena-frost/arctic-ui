@@ -14,6 +14,7 @@ Router.map(function() {
       this.route('info')
     })
   })
+  this.route('add');
 });
 
 export default Router;

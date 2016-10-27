@@ -6,8 +6,8 @@ const {
 } = DS
 
 export default JSONAPISerializer.extend({
-  primaryKey: '_id',
-  serializeId (id) {
-    return id.toString()
-  }
+  // primaryKey: '_id',
+  // serializeId (id) {
+  //   return id.toString()
+  // }
 })

@@ -7,15 +7,11 @@ const {
 } = DS
 
 export default Model.extend({
-  link: attr('string'),
-  user: attr('string'),
-  name: attr('string'),
   version: attr('string'),
+  link: attr('string'),
+  organization: attr('string'),
   description: attr('string'),
-  dependencies: hasMany('dependency', {
-    inverse: false
+  versions: hasMany('version', {
+    inverse: 'repository'
   }),
-  devdependencies: hasMany('dependency', {
-    inverse: false
-  })
 })
