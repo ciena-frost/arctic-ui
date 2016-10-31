@@ -46,8 +46,8 @@
     </div>
     {{#if model.isdependency.isdependencies}}
     <div class = "side-bar content col l4 overflow z-depth-5 ">
-        {{md-input value=repoFilter icon="search tiny right" label='Search repositories that use me'}}
-        {{#each model.isdependency.isdependencies as |dep|}}
+        {{md-input value=depFilter icon="search tiny right" label='Search repositories by name or organization'}}
+        {{#each isDepFilteredModel as |dep|}}
           <div class='col s6 m6 l6'>
             {{#link-to 'repositories.repository' dep.id}}
             <div class='waves-effect waves-dark card small tall blue-grey z-depth-2'>

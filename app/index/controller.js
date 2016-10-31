@@ -7,14 +7,17 @@ const {
 } = Ember
 
 export default Controller.extend({
-  filteredModel: computed('model', 'repoFilter', 'ciena-frost', 'bp-frost', 'bp-ui-apps', 'ciena-blueplanet',function () {
+  filteredModel: computed('model', 'repoFilter', 'ciena-frost', 'bp-frost', 'bp-ui-apps', 'ciena-blueplanet','otherOrg',function () {
     const model = get(this, 'model')
-    var filter = get(this, 'repoFilter')
-    var cienaFrostChecked = get(this, 'ciena-frost')
-    var bpFrostChecked = get(this, 'bp-frost')
-    var bpUiAppsChecked = get(this, 'bp-ui-apps')
-    var cienaBpChecked = get(this, 'ciena-blueplanet')
-    var orgFilter = []
+    var filter = get(this, 'repoFilter'),
+        cienaFrostChecked = get(this, 'ciena-frost'),
+        bpFrostChecked = get(this, 'bp-frost'),
+        bpUiAppsChecked = get(this, 'bp-ui-apps'),
+        cienaBpChecked = get(this, 'ciena-blueplanet'),
+        otherChecked = get(this, 'otherOrg'),
+        orgFilter = [],
+        otherFilter = ['ciena-frost', 'BP_FROST', 'BP_UI_APPS', 'ciena-blueplanet']
+
 
     cienaFrostChecked ? orgFilter.addObject('ciena-frost') : orgFilter.removeObject('ciena-frost')
     bpFrostChecked ? orgFilter.addObject('BP_FROST') : orgFilter.removeObject('BP_FROST')
@@ -28,8 +31,10 @@ export default Controller.extend({
       return Object.keys(repo).some(key => {
         if (typeof repo[key] !== 'string'){
           return false
-        }else if(repo.data.organization.indexOf(orgFilter) > -1 && repo[key].indexOf(filter) > -1){
+        }else if(((otherChecked && !(otherFilter.indexOf(repo.data.organization) > -1)) || (!otherChecked && (orgFilter.length === 0 || !(orgFilter.indexOf(repo.data.organization) === -1)))) && repo[key].indexOf(filter) > -1){
           return true
+        }else{
+          return false
         }
       })
     })

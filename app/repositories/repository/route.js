@@ -10,7 +10,6 @@ export default Route.extend({
     var repository = get(this, 'store').find('repository', params.id)
     var isdependency= get(this,'store').find('isdependency', params.id)
 
-
     return RSVP.hash({
       repository:repository,
       isdependency:isdependency

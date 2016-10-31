@@ -3,16 +3,15 @@
     <form>
       <h5>Filters</h5>
       {{md-input value=repoFilter label='Repository'}}
+      <div class="divider"></div>
       {{md-check name="Ciena Frost" checked=ciena-frost}}
       {{md-check name="Ciena BluePlanet" checked=ciena-blueplanet}}
       {{md-check name="BluePlanet Frost" checked=bp-frost}}
       {{md-check name="BluePlanet UI Apps" checked=bp-ui-apps}}
-      <!-- {{#md-radios selection='' optionValuePath='value' optionLabelPath='Oranization Names'}}
-        <p>{{md-radio value=ciena-frost name="Ciena Frost"}}</p>
-        <p>{{md-radio value=bp-frost name="BluePlanet Frost"}}</p>
-        <p>{{md-radio value=bp-ui-apps name="BluePlanet UI Apps"}}</p>
-      {{/md-radios}} -->
-
+      <div class="divider"></div>
+      {{md-check name="Other" checked=otherOrg}}
+      <div class="divider"></div>
+      
     </form>
 
   </div>
