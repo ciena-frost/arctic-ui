@@ -5,6 +5,7 @@
     "ember-cli-shims": "0.1.1",
     "ember-qunit-notifications": "0.1.0",
     "urijs": "^1.18.1",
-    "materialize": "0.97.6"
+    "materialize": "0.97.6",
+    "bootstrap": "~3.3.5"
   }
 }
