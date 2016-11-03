@@ -3,8 +3,15 @@
     <form class="col s12">
       <div class="offset-l3 row">
         <div class="input-field offset-l3 col s6">
-          {{md-input value=repolink icon="queue right teal-text"  label='Repository Link'}}
+          <form onsubmit="return false">
+            {{md-input value=newlink icon="queue right teal-text" label='Repository Link' }}
+          </form>
+          {{addRepo}}
+          <div class="center">
+            {{md-btn action='add' text='submit' buttonType='flat' class='lime'}}
+          </div>
         </div>
       </div>
+          {{newObject}}
     </form>
   </div>

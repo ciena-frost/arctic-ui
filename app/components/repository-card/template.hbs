@@ -1,0 +1,21 @@
+<div class='col s12 m6 l3'>
+  {{#link-to 'repositories.repository' repo.id}}
+    <div class = "wave-effect waves-dark card small light-green {{if (eq repo.organization 'ciena-frost') 'lighten-1' ''}} {{if (eq repo.organization 'ciena-blueplanet') 'lighten-2'''}} {{if (eq repo.organization 'BP_FROST') 'lighten-3' ''}} {{if (eq repo.organization 'BP_UI_APPS') 'lighten-4' ''}}">
+      <div class="card-content black-text">
+        <span class="card-title-main black-text">{{repo.id}}</span>
+        <p class=truncate>
+          {{#if (eq repo.description null)}}
+            No description available.
+          {{else if (eq repo.description "")}}
+            No description available.
+          {{else}}
+            {{repo.description}}
+          {{/if}}
+        </p>
+      </div>
+      <div class="card-action center-align">
+        <a href='{{repo.link}}' target='_blank'>External Link</a>
+      </div>
+    </div>
+  {{/link-to}}
+</div>

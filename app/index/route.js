@@ -10,7 +10,7 @@ export default Route.extend({
 	},
   actions: {
     add () {
-      const link = (this.get('controller').get('newRepo'))
+      var link = (this.get('controller').get('repolink'))
       get(this, 'store').createRecord('repository', {link}).save()
     }
   }

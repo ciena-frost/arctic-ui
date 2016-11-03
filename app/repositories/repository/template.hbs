@@ -1,76 +1,54 @@
 <div class = "content row">
-    <div class = "content col l8 overflow">
-      <div class = "row">
-      <ul class = "collection with-header">
-        <li class="collection-header"><h4><i><a href='{{model.repository.link}}' target='_blank'>{{model.repository.id}}</a></i></h4></li>
-        <li class="collection-item">Author: {{model.repository.organization}}</li>
-        <li class="collection-item">Latest Version: {{model.repository.version}}</li>
-        <li class="collection-item">Description: {{model.repository.description}}</li>
-      </ul>
+  <div class = "content col l8 overflow"> <!--Left side of page-->
+    <div class = 'row'> <!--Repository Information-->
+        <ul class = "collection with-header">
+          <li class="collection-header"><h4><i><a href='{{model.repository.link}}' target='_blank'>{{model.repository.id}}</a></i></h4></li>
+          <li class="collection-item">Author: {{model.repository.organization}}</li>
+          <li class="collection-item">Latest Version: {{model.repository.version}}</li>
+          <li class="collection-item">Description: {{model.repository.description}}</li>
+        </ul>
     </div>
-      <div class='row'>
-        <div class='content col l12 m6 s8'>
-          <div class='row'>
-            <h5>Dependencies<br /></h5>
+    <div class='row'> <!--Dev and Dependencies-->
+      <div class='content col l12 m6 s8'>
+        <div class='row'> <!--Dependencies-->
+          <h5>Dependencies<br /></h5>
               {{#each model.repository.versions.lastObject.dependencies as |dep|}}
-                <div class='col s6 m6 l2'>
-                  {{#link-to 'repositories.repository' dep.name}}
-                  <div class='waves-effect waves-dark card small blue-grey darken-1'>
-                    <span class="card-title-small white-text">{{dep.name}}</span>
-                    <div class="card-content teal-text darken-2">
-                      Version: {{dep.version}}
-                    </div>
-                  </div>
-                  {{/link-to}}
-                </div>
+                {{dependency-card dep=dep cardTags='waves-effect waves-dark card small blue-grey darken-1'}}
               {{/each}}
-            </div>
-
-          <div class ='row'>
+        </div>
+        <div class ='row'> <!--DevDependencies-->
             <h5>Developer Dependencies</h5>
-            {{#each model.repository.versions.lastObject.devdependencies as |dep|}}
-              <div class='col s6 m6 l2'>
-                {{#link-to 'repositories.repository' dep.name}}
-                <div class='waves-effect waves-dark card small blue-grey darken-2'>
-                  <span class="card-title-small white-text bold">{{dep.name}}</span>
-                  <div class="card-content teal-text darken-2">
-                    Version: {{dep.version}}
-                  </div>
-                </div>
-                {{/link-to}}
-              </div>
-            {{/each}}
-          </div>
+              {{#each model.repository.versions.lastObject.devdependencies as |dep|}}
+                {{dependency-card dep=dep cardTags='waves-effect waves-dark card small blue-grey darken-2'}}
+              {{/each}}
         </div>
       </div>
     </div>
-    {{#if model.isdependency.isdependencies}}
-    <div class = "side-bar content col l4 overflow z-depth-5 ">
-        {{md-input value=depFilter icon="search tiny right" label='Search repositories by name or organization'}}
-        {{#each isDepFilteredModel as |dep|}}
-          <div class='col s6 m6 l6'>
-            {{#link-to 'repositories.repository' dep.id}}
-            <div class='waves-effect waves-dark card small tall blue-grey z-depth-2'>
+  </div>
+  {{#if model.isdependency.isdependencies}}
+    <div class = "side-bar content col l4 overflow z-depth-5 "> <!--Right side of Page-->
+      {{md-input value=depFilter icon="search tiny right" label='Search repositories by name or organization'}}
+      {{#each isDepFilteredModel as |dep|}}
+        <div class='col s6 m6 l6'> <!--isdependency card-->
+          {{#link-to 'repositories.repository' dep.id}}
+            <div class = "wave-effect waves-dark card small tall light-green {{if (eq dep.organization 'ciena-frost') 'lighten-1' ''}} {{if (eq dep.organization 'ciena-blueplanet') 'lighten-2'''}} {{if (eq dep.organization 'BP_FROST') 'lighten-3' ''}} {{if (eq dep.organization 'BP_UI_APPS') 'lighten-4' ''}}">
               <span class="card-title-small white-text">
                 {{dep.id}}
-
               </span>
-              <div class="card-content white-text lighten-3 truncate">
-              {{#each dep.versions.lastObject.dependencies as |rep|}}
-                {{#if (eq rep.name model.repository.id)}}Version used: {{rep.version}} <br /> Type: Dependency <br />{{/if}}
-              {{/each}}
-              {{#each dep.versions.lastObject.devdependencies as |rep|}}
-                {{#if (eq rep.name model.repository.id)}}Version used: {{rep.version}} <br /> Type:  DevDependency{{/if}}
-              {{/each}}
-              <br />
-                Description: {{dep.description}} <br/>
-
-                Organization: {{dep.organization}}
+              <div class="card-content white-text lighten-3 truncate"> <!--isdependency card content-->
+                {{#each dep.versions.lastObject.dependencies as |rep|}}
+                  {{#if (eq rep.name model.repository.id)}}Version used: {{rep.version}} <br /> Type: Dependency <br />{{/if}}
+                {{/each}}
+                {{#each dep.versions.lastObject.devdependencies as |rep|}}
+                  {{#if (eq rep.name model.repository.id)}}Version used: {{rep.version}} <br /> Type:  DevDependency{{/if}}
+                {{/each}}
+                  Description: {{dep.description}} <br/>
+                  Organization: {{dep.organization}}
               </div>
             </div>
-            {{/link-to}}
-          </div>
-        {{/each}}
+          {{/link-to}}
+        </div>
+      {{/each}}
     </div>
-    {{/if}}
+  {{/if}}
 </div>

@@ -1,5 +1,5 @@
 <div class="content row">
-  <div class='side-bar col l2 m4 hide-on-small-and-down side-bar z-depth-2'>
+  <div class='side-bar col l2 m4 hide-on-small-and-down side-bar z-depth-2'> <!--SideBar-->
     <form>
       <h5>Filters</h5>
       {{md-input value=repoFilter label='Repository'}}
@@ -11,32 +11,11 @@
       <div class="divider"></div>
       {{md-check name="Other" checked=otherOrg}}
       <div class="divider"></div>
-      
     </form>
-
   </div>
-
-    <div class='row'>
-      <div class='content overflow col l10 m8 s12'>
-      {{#each filteredModel as |repo|}}
-        <div class='col s12 m6 l3'>
-          {{#link-to 'repositories.repository' repo.id}}
-          <div class='wave-effect waves-dark card small blue-grey darken-1'>
-            <div class="card-content white-text">
-              <span class="card-title-main">{{repo.id}}</span>
-              <p class=truncate>{{repo.description}}</p>
-            </div>
-            <div class="card-action center-align">
-              <a href='{{repo.link}}' target='_blank'>{{repo.source}}External Link</a>
-            </div>
-          </div>
-          {{/link-to}}
-        </div>
-      {{/each}}
-    </div>
-    <!-- A floating example -->
+  <div class='content overflow col l10 m8 s12'> <!--Card Container-->
+    {{#each filteredModel as |repo|}}
+      {{repository-card repo=repo}}
+    {{/each}}
   </div>
-  {{md-btn icon='mdi-content-add'
-    action='addRepo' buttonType='floating'
-    class='btn-large bottom-right'}}
 </div>

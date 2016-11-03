@@ -1,4 +1,18 @@
-import Ember from 'ember';
+import Ember from 'ember'
 
-export default Ember.Route.extend({
+const {
+  Route,
+  get
+} = Ember
+export default Route.extend({
+  newRepo: null,
+  actions: {
+    add: function(){
+      var link = (this.get('controller').get('newlink'))
+      if(link){
+        var newRepo = get(this, 'store').createRecord('repository', {link})
+        newRepo.save()
+      }
+    }
+  }
 });
