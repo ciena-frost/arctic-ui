@@ -14,7 +14,7 @@ html, body.ember-application, body {
     font-size: 0.8em;
     height: 90px;
     min-width: 130px;
-    max-width: 550px;
+    max-width: 200px;
     padding-top: 8px;
     padding-left: 8px;
   }
@@ -26,10 +26,6 @@ html, body.ember-application, body {
     padding: 10px;
     max-height: 100%;
   }
-  .card-action{
-    font-size: .8em
-  }
-
   .content {
     height: inherit;
     &.overflow {
@@ -55,6 +51,8 @@ html, body.ember-application, body {
   }
   .nav-wrapper {
     background-color: #26a69a;
+    background-image: url("images/G_artic_bg.svg");
+    background-position: bottom;
     .brand-logo {
       padding-left: 15px;
     }
@@ -81,6 +79,7 @@ html, body.ember-application, body {
 
   }
   .card-action {
-    padding: 4px;
+    padding: 0px;
+    font-size: .8em
   }
 }
