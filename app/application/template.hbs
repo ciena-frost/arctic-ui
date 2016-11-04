@@ -3,14 +3,23 @@
     <div class="nav-wrapper">
       {{#link-to 'index' class='brand-logo'}}<img src="/assets/images/Artic_logo.svg" />{{/link-to}}
       <div class = "brand-logo center">
-        {{md-input value=repoFilter label='Repository' color=green}}
+        {{input value=repoFilter label='Repository'}}
       </div>
       <ul id="nav-mobile" class="right hide-on-small-and-down">
-        <li><a href="/add">Add Repository</a></li>
-        <!-- <li><a href="badges.html">Link 2</a></li>
-        <li><a href="collapsible.html">Link 3</a></li> -->
+        <li><a class="waves-effect" href="#modal1">Add Repository</a></li>
+        <li><a class="waves-effect" href="#modal1">Make Request</a></li>
       </ul>
     </div>
   </nav>
 </div>
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <h4>Modal Header</h4>
+    <p>A bunch of text</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+  </div>
+</div>
+
 {{outlet}}

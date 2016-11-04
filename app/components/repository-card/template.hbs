@@ -1,21 +1,26 @@
 <div class='col s12 m6 l4'>
-  {{#link-to 'repositories.repository' repo.id}}
-    <div class = "wave-effect waves-dark card small white {{if (eq repo.organization 'ciena-frost') 'lighten-1' ''}} {{if (eq repo.organization 'ciena-blueplanet') 'lighten-2'''}} {{if (eq repo.organization 'BP_FROST') 'lighten-3' ''}} {{if (eq repo.organization 'BP_UI_APPS') 'lighten-4' ''}} z-depth-0">
+  <div class = "wave-effect waves-dark card small white {{if (eq repo.organization 'ciena-frost') 'lighten-1' ''}} {{if (eq repo.organization 'ciena-blueplanet') 'lighten-2'''}} {{if (eq repo.organization 'BP_FROST') 'lighten-3' ''}} {{if (eq repo.organization 'BP_UI_APPS') 'lighten-4' ''}} z-depth-0">
+    <div class="col l3">
+      {{#link-to 'repositories.repository' repo.id}}
+        <img src={{repoIcon repo.organization}}  height=55px />
+      {{/link-to}}
+    </div>
+
+    <div class="col l9">
       <div class="card-content black-text">
-        <span class="card-title-main black-text">{{repo.id}}</span>
-        <p class=truncate>
-          {{#if (eq repo.description null)}}
-            No description available.
-          {{else if (eq repo.description "")}}
-            No description available.
-          {{else}}
-            {{repo.description}}
-          {{/if}}
-        </p>
-      </div>
-      <div class="card-action center-align">
-        <a href='{{repo.link}}' target='_blank'></a>
+        {{#link-to 'repositories.repository' repo.id}}
+          <div class = "linked black-text">
+            <span class="card-title-main black-text">{{repo.id}}</span>
+            <p>by: {{repo.organization}}</p>
+          </div>
+        {{/link-to}}
+
+        <a href='{{repo.link}}' target='_blank'>
+            <img src={{imagePath repo.link}} height=15px /> - SOURCE
+        </a>
+
+        <div class="card-action"></div>
       </div>
     </div>
-  {{/link-to}}
+  </div>
 </div>

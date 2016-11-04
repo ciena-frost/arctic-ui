@@ -1,5 +1,6 @@
-<div class = "content row">
-  <div class = "content col l8 overflow"> <!--Left side of page-->
+<div class = "content row overflow">
+  {{md-tabs content=basicTabsContent selected=basicTabsSelection}}
+  {{#if (eq basicTabsSelection "details")}}
     <div class = 'row'> <!--Repository Information-->
         <ul class = "collection with-header">
           <li class="collection-header"><h4><i><a href='{{model.repository.link}}' target='_blank'>{{model.repository.id}}</a></i></h4></li>
@@ -8,47 +9,60 @@
           <li class="collection-item">Description: {{model.repository.description}}</li>
         </ul>
     </div>
-    <div class='row'> <!--Dev and Dependencies-->
+  {{else if (eq basicTabsSelection "dependencies")}}
+  {{md-input value=dependenciesFilter icon="search tiny right" label='Search dependencies by name'}}
+    <div class='row overflow'> <!--Dev and Dependencies-->
       <div class='content col l12 m6 s8'>
         <div class='row'> <!--Dependencies-->
-          <h5>Dependencies<br /></h5>
-              {{#each model.repository.versions.lastObject.dependencies as |dep|}}
-                {{dependency-card dep=dep cardTags='waves-effect waves-dark card small blue-grey darken-1'}}
+          <h5>Dependencies<br /></h5><div class=divider></div>
+              {{#each dependenciesFilteredModel as |dep|}}
+                {{dependency-card dep=dep cardTags='waves-effect waves-dark card small white z-depth-0'}}
               {{/each}}
         </div>
         <div class ='row'> <!--DevDependencies-->
-            <h5>Developer Dependencies</h5>
-              {{#each model.repository.versions.lastObject.devdependencies as |dep|}}
-                {{dependency-card dep=dep cardTags='waves-effect waves-dark card small blue-grey darken-2'}}
+            <h5>Developer Dependencies</h5><div class=divider></div>
+              {{#each devDependenciesFilteredModel as |dep|}}
+                {{dependency-card dep=dep cardTags='waves-effect waves-dark card small white z-depth-0'}}
               {{/each}}
         </div>
       </div>
     </div>
-  </div>
-  {{#if model.isdependency.isdependencies}}
-    <div class = "side-bar content col l4 overflow z-depth-5 "> <!--Right side of Page-->
-      {{md-input value=depFilter icon="search tiny right" label='Search repositories by name or organization'}}
-      {{#each isDepFilteredModel as |dep|}}
-        <div class='col s6 m6 l6'> <!--isdependency card-->
-          {{#link-to 'repositories.repository' dep.id}}
-            <div class = "wave-effect waves-dark card small tall light-green {{if (eq dep.organization 'ciena-frost') 'lighten-1' ''}} {{if (eq dep.organization 'ciena-blueplanet') 'lighten-2'''}} {{if (eq dep.organization 'BP_FROST') 'lighten-3' ''}} {{if (eq dep.organization 'BP_UI_APPS') 'lighten-4' ''}}">
-              <span class="card-title-small white-text">
-                {{dep.id}}
-              </span>
-              <div class="card-content white-text lighten-3 truncate"> <!--isdependency card content-->
-                {{#each dep.versions.lastObject.dependencies as |rep|}}
-                  {{#if (eq rep.name model.repository.id)}}Version used: {{rep.version}} <br /> Type: Dependency <br />{{/if}}
-                {{/each}}
-                {{#each dep.versions.lastObject.devdependencies as |rep|}}
-                  {{#if (eq rep.name model.repository.id)}}Version used: {{rep.version}} <br /> Type:  DevDependency{{/if}}
-                {{/each}}
-                  Description: {{dep.description}} <br/>
-                  Organization: {{dep.organization}}
+  {{else if (eq basicTabsSelection "usedby")}}
+    {{#if model.isdependency.isdependencies}}
+        {{md-input value=depFilter icon="search tiny right" label='Search repositories by name or organization'}}
+        {{#each isDepFilteredModel as |dep|}}
+        <div class='col s12 m6 l4'>
+          <div class = "wave-effect waves-dark card small tall white z-depth-0">
+            <div class="col l3">
+              {{#link-to 'repositories.repository' dep.id}}
+                <img src={{repoIcon dep.organization}}  height=55px />
+              {{/link-to}}
+            </div>
+            <div class="col l9">
+              <div class="card-content black-text ">
+                {{#link-to 'repositories.repository' repo.id}}
+                  <div class = "linked black-text">
+                    <span class="card-title-main black-text">{{dep.id}}</span><br />
+                    {{#each dep.versions.lastObject.dependencies as |rep|}}
+                      {{#if (eq rep.name model.repository.id)}}<span class="truncate">Version used: {{rep.version}} </span> Type: Dependency{{/if}}
+                    {{/each}}
+                    {{#each dep.versions.lastObject.devdependencies as |rep|}}
+                      {{#if (eq rep.name model.repository.id)}}<span class="truncate"> Version used: {{rep.version}} </span> Type:  DevDependency{{/if}}
+                    {{/each}}
+                      <br /><span class="truncate">by: {{dep.organization}}</span>
+                  </div>
+                {{/link-to}}
+
+                <a href='{{dep.link}}' target='_blank'>
+                    <img src={{imagePath dep.link}} height=15px />-SOURCE
+                </a>
+
+                <div class="card-action"></div>
               </div>
             </div>
-          {{/link-to}}
+          </div>
         </div>
-      {{/each}}
-    </div>
+        {{/each}}
+    {{/if}}
   {{/if}}
 </div>

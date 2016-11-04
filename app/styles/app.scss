@@ -4,6 +4,7 @@ $roboto-font-path: '../assets/';
 // Materialize styles
 @import "materialize";
 @import "ember-cli-materialize";
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 html, body.ember-application, body {
   height: 100%;
@@ -14,13 +15,13 @@ html, body.ember-application, body {
     font-size: 0.8em;
     height: 90px;
     min-width: 130px;
-    max-width: 200px;
+    max-width: 250px;
     padding-top: 8px;
     padding-left: 8px;
   }
   .card.small.tall{
     height: 130px;
-    width: 200px;
+    width: 300px;
   }
   .card.small .card-content {
     padding: 10px;
@@ -61,12 +62,10 @@ html, body.ember-application, body {
   .card-title-main {
     margin-top: auto;
     margin-bottom: 0px;
-    padding: 5px;
-    font-weight: bold;
+    padding: 0px;
     text-transform:capitalize;
-    font-size: 1.2em;
+    font-size: 1.05em;
     line-height: 10px;
-
   }
   .card-title-small {
     margin-top: auto;

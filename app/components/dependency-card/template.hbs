@@ -1,11 +1,12 @@
 <div class='col s6 m6 l2'>
   {{#link-to 'repositories.repository' dep.name}}
   <div class={{cardTags}}>
-    <span class="card-title-small white-text">{{dep.name}}</span>
+    <span class="card-title-small black-text">{{dep.name}}</span>
     <div class="card-content teal-text darken-2">
       <div class="truncate">
         Version: {{dep.version}}
       </div>
+      <div class="card-action"></div>
     </div>
   </div>
   {{/link-to}}
