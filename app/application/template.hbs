@@ -1,25 +1,57 @@
-<div class='navbar-fixed'>
-  <nav>
-    <div class="nav-wrapper">
-      {{#link-to 'index' class='brand-logo'}}<img src="/assets/images/Artic_logo.svg" />{{/link-to}}
-      <div class = "brand-logo center">
-        {{input value=repoFilter label='Repository'}}
+{{#if bigSearch}}
+  <div class="main-search col l12 z-depth-0">
+    <div class ="row">
+      <div class='navbar-fixed'>
+        <nav>
+            <div class="col offset-l5">
+              {{#link-to 'index' class='brand-logo center-align'}}<img src="/assets/images/Artic_logo.svg" height=45px; />{{/link-to}}
+            </div>
+            <ul id="nav-mobile" class="right hide-on-small-and-down">
+              <li><a class="waves-effect" href="#modal1">Add Repository</a></li>
+              <li><a class="waves-effect" href="#modal1">Make Request</a></li>
+            </ul>
+        </nav>
       </div>
-      <ul id="nav-mobile" class="right hide-on-small-and-down">
-        <li><a class="waves-effect" href="#modal1">Add Repository</a></li>
-        <li><a class="waves-effect" href="#modal1">Make Request</a></li>
-      </ul>
     </div>
-  </nav>
-</div>
-<div id="modal1" class="modal">
-  <div class="modal-content">
-    <h4>Modal Header</h4>
-    <p>A bunch of text</p>
-  </div>
-  <div class="modal-footer">
-    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-  </div>
-</div>
+    <div class="row large-text white-text">
+      <div class="col offset-l3">
+        <b>{{model.length}}</b> Components
+      </div>
+    </div>
+    <div class="row">
+      <div class="col l6 offset-l3">
 
+        <div class = "search-bar">
+          {{input type="text" value=repoFilter placeholder='Search for Components' enter="setSearch" label='Search for Components' }}
+        </div>
+        <div class = "brand-logo">
+        </div>
+      </div>
+    </div>
+  </div>
+{{else}}
+  <div class='navbar-fixed'>
+    <nav>
+      <div class="nav-wrapper">
+        {{#link-to 'index' class='brand-logo'}}<img src="/assets/images/Artic_logo.svg" />{{/link-to}}
+        <div class = "brand-logo center search-bar-small black-text">
+          {{input type="text" placeholder='Search for Components' enter="setSearch" value=repoFilter label=''}}
+        </div>
+        <ul id="nav-mobile" class="right hide-on-small-and-down">
+          <li><a class="waves-effect" href="#modal1">Add Repository</a></li>
+          <li><a class="waves-effect" href="#modal1">Make Request</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+{{/if}}
 {{outlet}}

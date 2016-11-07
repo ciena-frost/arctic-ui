@@ -30,7 +30,7 @@ html, body.ember-application, body {
   .content {
     height: inherit;
     &.overflow {
-      height: 94VH;
+      height: 85VH;
       overflow-y: scroll;
       .row {
         margin-bottom: 5rem;
@@ -53,6 +53,7 @@ html, body.ember-application, body {
   .nav-wrapper {
     background-color: #26a69a;
     background-image: url("images/G_artic_bg.svg");
+    box-shadow: 0;
     background-position: bottom;
     .brand-logo {
       padding-left: 15px;
@@ -80,5 +81,37 @@ html, body.ember-application, body {
   .card-action {
     padding: 0px;
     font-size: .8em
+  }
+  .main-search{
+    background: url("images/G_mountain1.svg"), url("images/G_artic_bg.svg");
+    background-position: bottom;
+    font-size: 1em;
+    height: 30VH;
+    width: 100VW;
+  }
+  .large-text{
+    font-size: 2.0em
+  }
+  .search-bar{
+    padding: 0;
+    height: 47px;
+    min-width: 300px;
+    position: relative;
+    top: 0px;
+    outline: 2px solid teal;
+    border: 1px solid #cdcdcd;
+    border-color: rgba(0,0,0,.15);
+    background-color: white;
+  }
+  .search-bar-small{
+    padding: 0;
+    height: 47px;
+    min-width: 300px;
+
+  }
+
+  nav{
+    background-color: rgba(238, 110, 115, 0);
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.16), 0 0px 0px 0 rgba(0, 0, 0, 0.12);
   }
 }

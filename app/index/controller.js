@@ -7,9 +7,13 @@ const {
 } = Ember
 
 export default Controller.extend({
+  appController: Ember.inject.controller('application'),
+  repoFilter: Ember.computed('appController.searchTerm', function(){
+    return this.get('appController.searchTerm')
+  }),
   filteredModel: computed('model', 'repoFilter', 'ciena-frost', 'bp-frost', 'bp-ui-apps', 'ciena-blueplanet','otherOrg',function () {
     const model = get(this, 'model')
-    var filter = get(this, 'repoFilter'),
+    var filter = get(this, 'repoFilter').toLowerCase(),
         cienaFrostChecked = get(this, 'ciena-frost'),
         bpFrostChecked = get(this, 'bp-frost'),
         bpUiAppsChecked = get(this, 'bp-ui-apps'),

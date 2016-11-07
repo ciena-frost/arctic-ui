@@ -40,7 +40,7 @@
             </div>
             <div class="col l9">
               <div class="card-content black-text ">
-                {{#link-to 'repositories.repository' repo.id}}
+                {{#link-to 'repositories.repository' dep.id}}
                   <div class = "linked black-text">
                     <span class="card-title-main black-text">{{dep.id}}</span><br />
                     {{#each dep.versions.lastObject.dependencies as |rep|}}

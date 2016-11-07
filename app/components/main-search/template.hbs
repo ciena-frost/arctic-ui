@@ -1,0 +1,27 @@
+{{! Template for the main-search component }}
+<div class="main-search col l12 z-depth-1">
+  <div class ="row">
+    <div class='navbar-fixed'>
+      <nav>
+          <div class="col offset-l5">
+            {{#link-to 'index' class='brand-logo center-align'}}<img src="/assets/images/Artic_logo.svg" height=45px; />{{/link-to}}
+          </div>
+          <ul id="nav-mobile" class="right hide-on-small-and-down">
+            <li><a class="waves-effect" href="#modal1">Add Repository</a></li>
+            <li><a class="waves-effect" href="#modal1">Make Request</a></li>
+          </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="row large-text white-text">
+    <div class="col offset-l3">
+      <b>129</b> Components
+    </div>
+  </div>
+  <div class="row">
+    <div class = "col l6 offset-l3 brand-logo">
+      {{md-input value=repoFilter label='Search for Components'}}
+    </div>
+  </div>
+</div>
+{{yield}}
