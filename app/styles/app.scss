@@ -30,7 +30,7 @@ html, body.ember-application, body {
   .content {
     height: inherit;
     &.overflow {
-      height: 85VH;
+      height: 95VH;
       overflow-y: scroll;
       .row {
         margin-bottom: 5rem;
@@ -83,8 +83,9 @@ html, body.ember-application, body {
     font-size: .8em
   }
   .main-search{
-    background: url("images/G_mountain1.svg"), url("images/G_artic_bg.svg");
-    background-position: bottom;
+    background: url("images/G_moutain1.svg") left no-repeat,
+                url("images/G_mountain2.svg") right bottom no-repeat,
+                url("images/G_artic_bg.svg") bottom;
     font-size: 1em;
     height: 30VH;
     width: 100VW;
@@ -109,7 +110,18 @@ html, body.ember-application, body {
     min-width: 300px;
 
   }
-
+  .modal{
+    max-height: 15VH;
+  }
+  .pagination {
+    .active{
+      padding-top: 0px;
+      background-color: white;
+    }
+    .li .i{
+      padding-top: 100px;
+    }
+  }
   nav{
     background-color: rgba(238, 110, 115, 0);
     box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.16), 0 0px 0px 0 rgba(0, 0, 0, 0.12);

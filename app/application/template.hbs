@@ -7,8 +7,8 @@
               {{#link-to 'index' class='brand-logo center-align'}}<img src="/assets/images/Artic_logo.svg" height=45px; />{{/link-to}}
             </div>
             <ul id="nav-mobile" class="right hide-on-small-and-down">
-              <li><a class="waves-effect" href="#modal1">Add Repository</a></li>
-              <li><a class="waves-effect" href="#modal1">Make Request</a></li>
+              <li><a class="waves-effect" {{action 'addRepoDialog'}}>Add Repository</a></li>
+              <li><a class="waves-effect" {{action 'toggleSearch'}}>Make Request</a></li>
             </ul>
         </nav>
       </div>
@@ -22,7 +22,7 @@
       <div class="col l6 offset-l3">
 
         <div class = "search-bar">
-          {{input type="text" value=repoFilter placeholder='Search for Components' enter="setSearch" label='Search for Components' }}
+          {{input type="text" value=repoFilter placeholder='Search for Components' enter="smallSearch" label='Search for Components' }}
         </div>
         <div class = "brand-logo">
         </div>
@@ -33,25 +33,31 @@
   <div class='navbar-fixed'>
     <nav>
       <div class="nav-wrapper">
-        {{#link-to 'index' class='brand-logo'}}<img src="/assets/images/Artic_logo.svg" />{{/link-to}}
+        <button class='brand-logo' {{action 'biggerSearch'}}>{{#link-to 'index' }}<img src="/assets/images/Artic_logo.svg" />{{/link-to}}</button>
+        {{!-- {{#link-to 'index' class='brand-logo'}}<img src="/assets/images/Artic_logo.svg" />{{/link-to}} --}}
         <div class = "brand-logo center search-bar-small black-text">
-          {{input type="text" placeholder='Search for Components' enter="setSearch" value=repoFilter label=''}}
+          {{input type="text" placeholder='Search for Components' enter="smallSearch" value=repoFilter label=''}}
         </div>
         <ul id="nav-mobile" class="right hide-on-small-and-down">
-          <li><a class="waves-effect" href="#modal1">Add Repository</a></li>
-          <li><a class="waves-effect" href="#modal1">Make Request</a></li>
+          <li><a class="waves-effect" {{action 'addRepoDialog'}}>Add Repository</a></li>
+          <li><a class="waves-effect" {{action 'toggleSearch'}}>Make Request</a></li>
         </ul>
       </div>
     </nav>
   </div>
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div>
+{{/if}}
+{{#if addRepo}}
+  {{#md-modal class="modal"}}
+      <div class="offset-l3 row">
+        <div class="input-field offset-l1 col l10">
+          {{md-input value=newlink icon="queue right teal-text" label='Repository Link' }}
+          <div class="center">
+            {{md-btn action='addNewRepo' text='Submit' buttonType='flat' class='left-align green lighten-2'}}
+
+            {{md-btn action='addNewRepo' text='Exit' buttonType='flat' class='right-align red lighten-2'}}
+          </div>
+        </div>
+      </div>
+  {{/md-modal}}
 {{/if}}
 {{outlet}}

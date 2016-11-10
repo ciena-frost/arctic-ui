@@ -5,26 +5,8 @@
         <img src={{repoIcon repo.organization}}  height=55px />
       {{/link-to}}
     </div>
-    {{#if True}}
-        {{#md-modal close='closeModal' class="test-modal"}}
-            <div class="modal-content">
-                <h4>Ohai there!</h4>
-                <p>Star ember-cli-materialize if you love it on
-                <a href="https://github.com/truenorth/ember-cli-materialize">github</a>!
-                </p>
-            </div>
-            <div class="modal-footer">
-                <a class="modal-action modal-close waves-effect waves-orange btn-flat agree-button" {{action 'agree'}}>
-                    Done!
-                </a>
-                <a class="modal-action modal-close waves-effect waves-red btn-flat cancel-button" {{action 'closeModal'}}>
-                    Cancel
-                </a>
-            </div>
-        {{/md-modal}}
-    {{/if}}
     <div class="col l9">
-      <div class="card-content black-text">
+      <div class="card-content left-align black-text">
         {{#link-to 'repositories.repository' repo.id}}
           <div class = "linked black-text">
             <span class="card-title-main black-text">{{repo.id}}</span>

@@ -11,6 +11,7 @@ export default Ember.Controller.extend({
     return get(this, 'store').findAll('repository');
   },
   bigSearch: true,
+  addRepo: false,
   searchTerm: '',
   reset: Ember.computed('repoFilter', function(){
      var temp = get(this,'repoFilter')
@@ -47,13 +48,35 @@ export default Ember.Controller.extend({
     },
     smallSearch(){
       var self = this
-      self.set('bigSearch', false)
+      this.set('bigSearch', false)
+      this.set('searchTerm', get(this, 'repoFilter'))
       console.log(self.get("bigSearch"));
+    },
+    biggerSearch(){
+      var self = this
+      this.set('bigSearch', true)
+      this.set('repoFilter', '')
+      this.set('searchTerm', '')
+      console.log(self.get("repoFilter"));
     },
     toggleSearch(){
       var self = this
       self.toggleProperty('bigSearch')
       console.log(self.get("bigSearch"));
-    }
+      console.log(this.currentRouteName);
+    },
+    addRepoDialog(){
+      this.set('addRepo', true)
+    },
+    addNewRepo: function(){
+      var link = (this.get('newlink'))
+      console.log(link);
+      if(link !== '' && link !== undefined){
+        var newRepo = get(this, 'store').createRecord('repository', {link})
+        newRepo.save()
+      }
+      this.set('addRepo', false)
+      this.set('newlink', '')
+    },
   }
 });

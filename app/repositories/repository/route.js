@@ -7,12 +7,11 @@ const {
 
 export default Route.extend({
   model (params) {
-    var repository = get(this, 'store').find('repository', params.id)
-    var isdependency= get(this,'store').find('isdependency', params.id)
-
+    let repository = get(this, 'store').find('repository', params.id)
+    let isdependency= get(this,'store').find('isdependency', params.id)
     return RSVP.hash({
       repository: repository,
-      isdependency: isdependency
+      isdependency: isdependency,
     })
   },
 

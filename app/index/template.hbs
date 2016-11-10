@@ -12,9 +12,14 @@
       <div class="divider"></div>
     </form>
   </div>
-  <div class='content overflow col l10 m8 s12'> <!--Card Container-->
-    {{#each filteredModel as |repo|}}
-      {{repository-card repo=repo}}
-    {{/each}}
+  <div class='row center-align'>
+    <div class='content col l10 m8 s12' style="height:550px;"> <!--Card Container-->
+      {{#each currentPage as |repo|}}
+        {{repository-card repo=repo}}
+      {{/each}}
+    </div>
+    <div class='row'>
+      {{md-pagination min=1 max=repoPages.length current=page range=7}}
+    </div>
   </div>
 </div>

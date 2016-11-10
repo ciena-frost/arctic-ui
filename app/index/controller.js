@@ -9,6 +9,7 @@ const {
 export default Controller.extend({
   appController: Ember.inject.controller('application'),
   repoFilter: Ember.computed('appController.searchTerm', function(){
+    this.set('page', 1)
     return this.get('appController.searchTerm')
   }),
   filteredModel: computed('model', 'repoFilter', 'ciena-frost', 'bp-frost', 'bp-ui-apps', 'ciena-blueplanet','otherOrg',function () {
@@ -22,11 +23,14 @@ export default Controller.extend({
         orgFilter = [],
         otherFilter = ['ciena-frost', 'BP_FROST', 'BP_UI_APPS', 'ciena-blueplanet']
 
+    console.log(filter);
 
     cienaFrostChecked ? orgFilter.addObject('ciena-frost') : orgFilter.removeObject('ciena-frost')
     bpFrostChecked ? orgFilter.addObject('BP_FROST') : orgFilter.removeObject('BP_FROST')
     bpUiAppsChecked ? orgFilter.addObject('BP_UI_APPS') : orgFilter.removeObject('BP_UI_APPS')
     cienaBpChecked ? orgFilter.addObject('ciena-blueplanet') : orgFilter.removeObject('ciena-blueplanet')
+
+    this.get('appController').toggleSearch
 
     if(!filter){
       filter = ''
@@ -42,6 +46,21 @@ export default Controller.extend({
         }
       })
     })
+  }),
+  repoPages: Ember.computed('filteredModel',function(){
+    let repos = this.get('filteredModel')
+    let pages = []
+    for (var i = 0; repos.length > i; i+=15) {
+      let temparray = repos.slice(i,i+15)
+      pages.push(temparray)
+    }
+    return pages;
+  }),
+  page: 1,
+  currentPage: Ember.computed('repoPages','page',function(){
+    let repos = this.get('repoPages')
+    let page = this.get('page')
 
-  })
+    return repos.objectAt(page-1);
+  }),
 })

@@ -1,27 +1,20 @@
 <div class = "content row overflow">
+  <h4><i><a href='{{model.repository.link}}' target='_blank'>&nbsp;{{model.repository.id}}</a></i></h4>
+  &nbsp;Latest Version: {{model.repository.versions.lastObject.version}}<br />
+  &nbsp;Description: {{model.repository.description}}
   {{md-tabs content=basicTabsContent selected=basicTabsSelection}}
-  {{#if (eq basicTabsSelection "details")}}
-    <div class = 'row'> <!--Repository Information-->
-        <ul class = "collection with-header">
-          <li class="collection-header"><h4><i><a href='{{model.repository.link}}' target='_blank'>{{model.repository.id}}</a></i></h4></li>
-          <li class="collection-item">Author: {{model.repository.organization}}</li>
-          <li class="collection-item">Latest Version: {{model.repository.version}}</li>
-          <li class="collection-item">Description: {{model.repository.description}}</li>
-        </ul>
-    </div>
-  {{else if (eq basicTabsSelection "dependencies")}}
-  {{md-input value=dependenciesFilter icon="search tiny right" label='Search dependencies by name'}}
+  {{#if (eq basicTabsSelection "dependencies")}}
     <div class='row overflow'> <!--Dev and Dependencies-->
       <div class='content col l12 m6 s8'>
         <div class='row'> <!--Dependencies-->
           <h5>Dependencies<br /></h5><div class=divider></div>
-              {{#each dependenciesFilteredModel as |dep|}}
+              {{#each model.repository.versions.lastObject.dependencies as |dep|}}
                 {{dependency-card dep=dep cardTags='waves-effect waves-dark card small white z-depth-0'}}
               {{/each}}
         </div>
         <div class ='row'> <!--DevDependencies-->
             <h5>Developer Dependencies</h5><div class=divider></div>
-              {{#each devDependenciesFilteredModel as |dep|}}
+              {{#each model.repository.versions.lastObject.devdependencies as |dep|}}
                 {{dependency-card dep=dep cardTags='waves-effect waves-dark card small white z-depth-0'}}
               {{/each}}
         </div>
@@ -29,7 +22,8 @@
     </div>
   {{else if (eq basicTabsSelection "usedby")}}
     {{#if model.isdependency.isdependencies}}
-        {{md-input value=depFilter icon="search tiny right" label='Search repositories by name or organization'}}
+      {{md-input value=depFilter icon="search tiny right" label='Search repositories by name or organization'}}
+      <div class="col l10 offset-l1">
         {{#each isDepFilteredModel as |dep|}}
         <div class='col s12 m6 l4'>
           <div class = "wave-effect waves-dark card small tall white z-depth-0">
@@ -54,7 +48,7 @@
                 {{/link-to}}
 
                 <a href='{{dep.link}}' target='_blank'>
-                    <img src={{imagePath dep.link}} height=15px />-SOURCE
+                    <img src={{imagePath dep.link}} height=15px />
                 </a>
 
                 <div class="card-action"></div>
@@ -63,6 +57,7 @@
           </div>
         </div>
         {{/each}}
+      </div>
     {{/if}}
   {{/if}}
 </div>
