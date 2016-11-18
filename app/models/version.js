@@ -7,8 +7,9 @@ const {
 } = DS
 
 export default DS.Model.extend({
-  name: attr('string'),
-  version: attr('string'),
+  name: DS.attr('string'),
+  version: DS.attr('string'),
+  compliantpercent: DS.attr(),
   repository: DS.belongsTo('repository', {
     inverse: 'versions'
   }),
@@ -16,6 +17,12 @@ export default DS.Model.extend({
     inverse: null
   }),
   devdependencies: hasMany('dependency', {
+    inverse: null
+  }),
+  ltsCompliant: hasMany('dependency', {
+    inverse: null
+  }),
+  ltsNonCompliant: hasMany('dependency', {
     inverse: null
   }),
 });

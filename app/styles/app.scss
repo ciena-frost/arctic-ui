@@ -15,7 +15,7 @@ html, body.ember-application, body {
     font-size: 0.8em;
     height: 90px;
     min-width: 130px;
-    max-width: 250px;
+    max-width: 300px;
     padding-top: 8px;
     padding-left: 8px;
   }
@@ -65,7 +65,8 @@ html, body.ember-application, body {
     margin-bottom: 0px;
     padding: 0px;
     text-transform:capitalize;
-    font-size: 1.05em;
+    font-size: 1em;
+    font-weight: bold;
     line-height: 10px;
   }
   .card-title-small {
@@ -121,6 +122,23 @@ html, body.ember-application, body {
     .li .i{
       padding-top: 100px;
     }
+  }
+  .source-icon{
+    opacity: 0.5;
+  }
+  .pill{
+    text-decoration:none;
+    color: white;
+  	font-size:9px;
+  	padding:0 3px;
+  	height: auto;
+  	display:inline-block;
+  	text-align:center;
+  	background-color:#DDDDDD;
+    border-radius: 3px;
+  }
+  .material-icon .tiny{
+    padding: 0px;
   }
   nav{
     background-color: rgba(238, 110, 115, 0);

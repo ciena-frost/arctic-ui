@@ -13,8 +13,8 @@ export default Controller.extend({
     return this.get('appController.searchTerm')
   }),
   filteredModel: computed('model', 'repoFilter', 'ciena-frost', 'bp-frost', 'bp-ui-apps', 'ciena-blueplanet','otherOrg',function () {
-    const model = get(this, 'model')
-    var filter = get(this, 'repoFilter').toLowerCase(),
+    const model = get(this, 'model.repositories')
+    var filter = get(this, 'repoFilter'),
         cienaFrostChecked = get(this, 'ciena-frost'),
         bpFrostChecked = get(this, 'bp-frost'),
         bpUiAppsChecked = get(this, 'bp-ui-apps'),
@@ -23,8 +23,11 @@ export default Controller.extend({
         orgFilter = [],
         otherFilter = ['ciena-frost', 'BP_FROST', 'BP_UI_APPS', 'ciena-blueplanet']
 
-    console.log(filter);
+    if(!filter){
 
+    }else{
+      filter.toLowerCase()
+    }
     cienaFrostChecked ? orgFilter.addObject('ciena-frost') : orgFilter.removeObject('ciena-frost')
     bpFrostChecked ? orgFilter.addObject('BP_FROST') : orgFilter.removeObject('BP_FROST')
     bpUiAppsChecked ? orgFilter.addObject('BP_UI_APPS') : orgFilter.removeObject('BP_UI_APPS')
@@ -63,4 +66,10 @@ export default Controller.extend({
 
     return repos.objectAt(page-1);
   }),
+  actions: {
+    smallSearch(){
+      var self = this
+      this.set('appController.bigSearch', false)
+    },
+  }
 })

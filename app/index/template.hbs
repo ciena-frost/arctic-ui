@@ -15,7 +15,7 @@
   <div class='row center-align'>
     <div class='content col l10 m8 s12' style="height:550px;"> <!--Card Container-->
       {{#each currentPage as |repo|}}
-        {{repository-card repo=repo}}
+        {{repository-card action=smallSearch repo=repo version=repo.versions}}
       {{/each}}
     </div>
     <div class='row'>

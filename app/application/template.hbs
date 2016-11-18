@@ -9,13 +9,14 @@
             <ul id="nav-mobile" class="right hide-on-small-and-down">
               <li><a class="waves-effect" {{action 'addRepoDialog'}}>Add Repository</a></li>
               <li><a class="waves-effect" {{action 'toggleSearch'}}>Make Request</a></li>
+              <li><button {{action 'smallSearch'}}>{{#link-to 'dashboard'}}Dashboard{{/link-to}}</button></li>
             </ul>
         </nav>
       </div>
     </div>
     <div class="row large-text white-text">
       <div class="col offset-l3">
-        <b>{{model.length}}</b> Components
+        <b>{{model.repositories.length}}</b> Components
       </div>
     </div>
     <div class="row">
@@ -41,6 +42,7 @@
         <ul id="nav-mobile" class="right hide-on-small-and-down">
           <li><a class="waves-effect" {{action 'addRepoDialog'}}>Add Repository</a></li>
           <li><a class="waves-effect" {{action 'toggleSearch'}}>Make Request</a></li>
+          <li><button {{action 'smallSearch'}}>{{#link-to 'dashboard'}}Dashboard{{/link-to}}</button></li>
         </ul>
       </div>
     </nav>

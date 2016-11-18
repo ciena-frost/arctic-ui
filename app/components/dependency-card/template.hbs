@@ -4,7 +4,10 @@
     <span class="card-title-small black-text">{{dep.name}}</span>
     <div class="card-content teal-text darken-2">
       <div class="truncate">
-        Version: {{dep.version}}
+        Version: {{dep.version}} <br />
+        {{#if dep.compliant}}
+          Min Required: {{dep.compliant}}
+        {{/if}}
       </div>
       <div class="card-action"></div>
     </div>

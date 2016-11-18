@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import RSVP from 'rsvp';
 
 const {
   Controller,
@@ -8,7 +9,10 @@ const {
 
 export default Ember.Controller.extend({
   model () {
-    return get(this, 'store').findAll('repository');
+    return RSVP.hash({
+      repositories: get(this, 'store').findAll('repository'),
+      versions: get(this, 'store').findAll('version'),
+    })
   },
   bigSearch: true,
   addRepo: false,
@@ -20,7 +24,7 @@ export default Ember.Controller.extend({
      }
    }),
   filteredModel: computed('model', 'repoFilter',function () {
-    const model = get(this, 'model')
+    const model = get(this, 'model.repositories')
     var filter = get(this, 'repoFilter')
 
     if(!filter){
@@ -50,27 +54,22 @@ export default Ember.Controller.extend({
       var self = this
       this.set('bigSearch', false)
       this.set('searchTerm', get(this, 'repoFilter'))
-      console.log(self.get("bigSearch"));
     },
     biggerSearch(){
       var self = this
       this.set('bigSearch', true)
       this.set('repoFilter', '')
       this.set('searchTerm', '')
-      console.log(self.get("repoFilter"));
     },
     toggleSearch(){
       var self = this
       self.toggleProperty('bigSearch')
-      console.log(self.get("bigSearch"));
-      console.log(this.currentRouteName);
     },
     addRepoDialog(){
       this.set('addRepo', true)
     },
     addNewRepo: function(){
       var link = (this.get('newlink'))
-      console.log(link);
       if(link !== '' && link !== undefined){
         var newRepo = get(this, 'store').createRecord('repository', {link})
         newRepo.save()
