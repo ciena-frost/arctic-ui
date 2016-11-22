@@ -1,27 +1,28 @@
+{{#liquid-bind model class="toLeft-demo" as |newModel|}}
 <div class = "content row overflow">
-  <h4><i><a href='{{model.repository.link}}' target='_blank'>&nbsp;{{model.repository.id}}</a></i></h4>
-  &nbsp;Latest Version: {{model.repository.versions.lastObject.version}}<br />
-  &nbsp;Description: {{model.repository.description}}
+  <h4><i><a href='{{newModel.repository.link}}' target='_blank'>&nbsp;{{newModel.repository.id}}</a></i></h4>
+  &nbsp;Latest Version: {{newModel.repository.versions.lastObject.version}}<br />
+  &nbsp;Description: {{newModel.repository.description}}
   {{md-tabs content=basicTabsContent selected=basicTabsSelection}}
   {{#if (eq basicTabsSelection "dependencies")}}
     <div class='row overflow'> <!--Dev and Dependencies-->
       <div class='content col l12 m6 s8'>
         <div class='row'> <!--Dependencies-->
           <h5>Dependencies<br /></h5><div class=divider></div>
-              {{#each model.repository.versions.lastObject.dependencies as |dep|}}
+              {{#each newModel.repository.versions.lastObject.dependencies as |dep|}}
                 {{dependency-card dep=dep cardTags='waves-effect waves-dark card small white z-depth-0'}}
               {{/each}}
         </div>
         <div class ='row'> <!--DevDependencies-->
             <h5>Developer Dependencies</h5><div class=divider></div>
-              {{#each model.repository.versions.lastObject.devdependencies as |dep|}}
+              {{#each newModel.repository.versions.lastObject.devdependencies as |dep|}}
                 {{dependency-card dep=dep cardTags='waves-effect waves-dark card small white z-depth-0'}}
               {{/each}}
         </div>
       </div>
     </div>
   {{else if (eq basicTabsSelection "usedby")}}
-    {{#if model.isdependency.isdependencies}}
+    {{#if newModel.isdependency.isdependencies}}
       {{md-input value=depFilter icon="search tiny right" label='Search repositories by name or organization'}}
       <div class="col l10 offset-l1">
         {{#each isDepFilteredModel as |dep|}}
@@ -38,10 +39,10 @@
                     <div class = "linked black-text">
                       <span class="card-title-main black-text">{{dep.id}}</span><br />
                       {{#each dep.versions.lastObject.dependencies as |rep|}}
-                        {{#if (eq rep.name model.repository.id)}}<span class="truncate">Version used: {{rep.version}} </span> Type: Dependency{{/if}}
+                        {{#if (eq rep.name newModel.repository.id)}}<span class="truncate">Version used: {{rep.version}} </span> Type: Dependency{{/if}}
                       {{/each}}
                       {{#each dep.versions.lastObject.devdependencies as |rep|}}
-                        {{#if (eq rep.name model.repository.id)}}<span class="truncate"> Version used: {{rep.version}} </span> Type:  DevDependency{{/if}}
+                        {{#if (eq rep.name newModel.repository.id)}}<span class="truncate"> Version used: {{rep.version}} </span> Type:  DevDependency{{/if}}
                       {{/each}}
                         <br /><span class="truncate">by: {{dep.organization}}</span>
                     </div>
@@ -61,3 +62,4 @@
     {{/if}}
   {{/if}}
 </div>
+{{/liquid-bind}}

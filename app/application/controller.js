@@ -66,16 +66,19 @@ export default Ember.Controller.extend({
       self.toggleProperty('bigSearch')
     },
     addRepoDialog(){
-      this.set('addRepo', true)
+      this.toggleProperty('addRepo')
     },
     addNewRepo: function(){
       var link = (this.get('newlink'))
       if(link !== '' && link !== undefined){
         var newRepo = get(this, 'store').createRecord('repository', {link})
+        Materialize.toast('Repository added to database!', 4000)
         newRepo.save()
+      }else{
+        Materialize.toast('Error: Repository Not Added', 4000)
       }
       this.set('addRepo', false)
       this.set('newlink', '')
-    },
+    }
   }
 });

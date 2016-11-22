@@ -14,9 +14,11 @@
   </div>
   <div class='row center-align'>
     <div class='content col l10 m8 s12' style="height:550px;"> <!--Card Container-->
-      {{#each currentPage as |repo|}}
+      {{#liquid-bind currentPage class='toLeft-demo' as |currentPageModel|}}
+      {{#each currentPageModel as |repo|}}
         {{repository-card action=smallSearch repo=repo version=repo.versions}}
       {{/each}}
+      {{/liquid-bind}}
     </div>
     <div class='row'>
       {{md-pagination min=1 max=repoPages.length current=page range=7}}

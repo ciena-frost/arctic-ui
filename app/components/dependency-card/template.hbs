@@ -5,8 +5,12 @@
     <div class="card-content teal-text darken-2">
       <div class="truncate">
         Version: {{dep.version}} <br />
-        {{#if dep.compliant}}
-          Min Required: {{dep.compliant}}
+        {{#if dep.compliant.[1]}}
+          {{#if dep.compliant.[0]}}
+            <span class="green-text">Min Required: {{dep.compliant.[1]}}</span>
+          {{else}}
+            <span class="red-text">Min Required: {{dep.compliant.[1]}}</span>
+          {{/if}}
         {{/if}}
       </div>
       <div class="card-action"></div>

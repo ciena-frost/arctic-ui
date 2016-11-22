@@ -1,14 +1,7 @@
 <div class="content row">
   <div class='side-bar col l2 m4 hide-on-small-and-down side-bar'> <!--SideBar-->
     <form>
-      <h5>Ecosystem:</h5>
-      {{!-- {{md-check name="Ciena Frost" checked=ciena-frost}}
-      {{md-check name="Ciena BluePlanet" checked=ciena-blueplanet}}
-      {{md-check name="BluePlanet Frost" checked=bp-frost}}
-      {{md-check name="BluePlanet UI Apps" checked=bp-ui-apps}}
-      <div class="divider"></div>
-      {{md-check name="Other" checked=otherOrg}}
-      <div class="divider"></div> --}}
+      <h5>Refine Search:</h5>
       {{md-range value=complianceRange  name="Compliance Range:"}}
       {{#md-switches multiple=false selection=radioSelection optionValuePath='id' optionLabelPath='text'}}
         <p>{{md-switch value='ember-cli-ember-ecosystem' name="Ember"}}</p>

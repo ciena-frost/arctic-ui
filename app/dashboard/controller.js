@@ -58,7 +58,8 @@ export default Controller.extend({
         emberCompliant = get(this, 'ember-cli-ember-ecosystem'),
         frostCompliant = get(this, 'ember-frost-ecosystem'),
         ecosystem = get(this, 'radioSelection'),
-        range = get(this,'complianceRange')
+        range = get(this,'complianceRange'),
+        wlFilter = ['ciena-frost', 'BP_FROST', 'BP_UI_APPS', 'ciena-blueplanet']
 
     this.get('appController').toggleSearch
 
@@ -85,8 +86,7 @@ export default Controller.extend({
             }
           }
         }
-
-        if (typeof repo[key] !== 'string'){
+        if (typeof repo[key] !== 'string' || !(wlFilter.indexOf(repo.data.organization) > -1)){
           return false
         }else if(repo[key].indexOf(filter) > -1 && repoVersion.data.compliantpercent){
           return true

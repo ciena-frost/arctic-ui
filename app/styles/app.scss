@@ -115,13 +115,28 @@ html, body.ember-application, body {
     max-height: 15VH;
   }
   .pagination {
+    font-size: 1em;
+    padding: 0px;
+    margin: 0px;
+    display: inline-flex;
+    font-size: 1em;
+    li{
+      i{
+        font-size: 1em;
+      }
+      a{
+        position: static;
+        border: 0;
+      }
+    }
     .active{
+      a{
+        background-color: #65d0cb
+      }
       padding-top: 0px;
       background-color: white;
     }
-    .li .i{
-      padding-top: 100px;
-    }
+
   }
   .source-icon{
     opacity: 0.5;
@@ -135,11 +150,12 @@ html, body.ember-application, body {
   	display:inline-block;
   	text-align:center;
   	background-color:#DDDDDD;
-    border-radius: 3px;
+    border-radius: 7px;
   }
   .material-icon .tiny{
     padding: 0px;
   }
+
   nav{
     background-color: rgba(238, 110, 115, 0);
     box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.16), 0 0px 0px 0 rgba(0, 0, 0, 0.12);

@@ -1,4 +1,4 @@
-{{#if bigSearch}}
+{{#liquid-if bigSearch class=""}}
   <div class="main-search col l12 z-depth-0">
     <div class ="row">
       <div class='navbar-fixed'>
@@ -8,7 +8,7 @@
             </div>
             <ul id="nav-mobile" class="right hide-on-small-and-down">
               <li><a class="waves-effect" {{action 'addRepoDialog'}}>Add Repository</a></li>
-              <li><a class="waves-effect" {{action 'toggleSearch'}}>Make Request</a></li>
+              <li><a class="waves-effect" onclick="Materialize.toast('Requests Currently Unavailable', 2000)">Make Request</a></li>
               <li><button {{action 'smallSearch'}}>{{#link-to 'dashboard'}}Dashboard{{/link-to}}</button></li>
             </ul>
         </nav>
@@ -41,14 +41,14 @@
         </div>
         <ul id="nav-mobile" class="right hide-on-small-and-down">
           <li><a class="waves-effect" {{action 'addRepoDialog'}}>Add Repository</a></li>
-          <li><a class="waves-effect" {{action 'toggleSearch'}}>Make Request</a></li>
+          <li><a class="waves-effect">Make Request</a></li>
           <li><button {{action 'smallSearch'}}>{{#link-to 'dashboard'}}Dashboard{{/link-to}}</button></li>
         </ul>
       </div>
     </nav>
   </div>
-{{/if}}
-{{#if addRepo}}
+{{/liquid-if}}
+{{#liquid-if addRepo}}
   {{#md-modal class="modal"}}
       <div class="offset-l3 row">
         <div class="input-field offset-l1 col l10">
@@ -56,10 +56,10 @@
           <div class="center">
             {{md-btn action='addNewRepo' text='Submit' buttonType='flat' class='left-align green lighten-2'}}
 
-            {{md-btn action='addNewRepo' text='Exit' buttonType='flat' class='right-align red lighten-2'}}
+            {{md-btn action='addRepoDialog' text='Exit' buttonType='flat' class='right-align red lighten-2'}}
           </div>
         </div>
       </div>
   {{/md-modal}}
-{{/if}}
-{{outlet}}
+{{/liquid-if}}
+{{liquid-outlet}}
