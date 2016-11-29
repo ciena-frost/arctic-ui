@@ -9,7 +9,7 @@
             <ul id="nav-mobile" class="right hide-on-small-and-down">
               <li><a class="waves-effect" {{action 'addRepoDialog'}}>Add Repository</a></li>
               <li><a class="waves-effect" onclick="Materialize.toast('Requests Currently Unavailable', 2000)">Make Request</a></li>
-              <li><button {{action 'smallSearch'}}>{{#link-to 'dashboard'}}Dashboard{{/link-to}}</button></li>
+              <li>{{#link-to 'dashboard'}}Dashboard{{/link-to}}</li>
             </ul>
         </nav>
       </div>
@@ -34,21 +34,21 @@
   <div class='navbar-fixed'>
     <nav>
       <div class="nav-wrapper">
-        <button class='brand-logo' {{action 'biggerSearch'}}>{{#link-to 'index' }}<img src="/assets/images/Artic_logo.svg" />{{/link-to}}</button>
+        <div class='brand-logo'>{{#link-to 'index' }}<img src="/assets/images/Artic_logo.svg" />{{/link-to}}</div>
         {{!-- {{#link-to 'index' class='brand-logo'}}<img src="/assets/images/Artic_logo.svg" />{{/link-to}} --}}
         <div class = "brand-logo center search-bar-small black-text">
           {{input type="text" placeholder='Search for Components' enter="smallSearch" value=repoFilter label=''}}
         </div>
         <ul id="nav-mobile" class="right hide-on-small-and-down">
           <li><a class="waves-effect" {{action 'addRepoDialog'}}>Add Repository</a></li>
-          <li><a class="waves-effect">Make Request</a></li>
-          <li><button {{action 'smallSearch'}}>{{#link-to 'dashboard'}}Dashboard{{/link-to}}</button></li>
+          <li><a class="waves-effect" onclick="Materialize.toast('Requests Currently Unavailable', 2000)">Make Request</a></li>
+          <li>{{#link-to 'dashboard'}}Dashboard{{/link-to}}</li>
         </ul>
       </div>
     </nav>
   </div>
 {{/liquid-if}}
-{{#liquid-if addRepo}}
+{{#liquid-if addRepo class="crossFade-modal"}}
   {{#md-modal class="modal"}}
       <div class="offset-l3 row">
         <div class="input-field offset-l1 col l10">

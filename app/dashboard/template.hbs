@@ -9,11 +9,13 @@
       {{/md-switches}}
     </form>
   </div>
-  <div class='center-align row'>
+  <div class='row'>
     <div class='content col l10 m8 s12' style="height:550px;"> <!--Card Container-->
+      {{#liquid-bind currentPage class='toLeft-demo' as |currentPageModel|}}
       {{#each currentPage as |repo|}}
         {{dashboard-card repo=repo}}
       {{/each}}
+      {{/liquid-bind}}
     </div>
     <div class='row'>
       {{md-pagination min=1 max=repoPages.length current=page range=7}}

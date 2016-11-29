@@ -70,10 +70,12 @@ export default Controller.extend({
     }
     return model.filter(repo => {
       return Object.keys(repo).some(key => {
-        var repoVersion = get(repo, 'versions.lastObject'),
-            ecoCompliant = get(repoVersion, 'data.compliantpercent')
+        var repoVersion = get(repo, 'versions.lastObject')
+        if(repoVersion){
+          var ecoCompliant = get(repoVersion, 'data.compliantpercent')
+        }
 
-        if(ecosystem){
+        if(ecosystem && ecoCompliant){
           if(!ecoCompliant[ecosystem]){
             return false
           }else if(ecoCompliant[ecosystem][0]/(ecoCompliant[ecosystem][0]+ecoCompliant[ecosystem][1])*100 > range){

@@ -5,6 +5,9 @@ const {
   get
 } = Ember
 export default Route.extend({
+  biggerSearch: function(){
+    this.controllerFor('application').set('bigSearch', true)
+  }.on('activate'),
   actions: {
     add () {
       var link = (this.get('controller').get('repolink'))

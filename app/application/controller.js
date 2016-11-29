@@ -14,7 +14,7 @@ export default Ember.Controller.extend({
       versions: get(this, 'store').findAll('version'),
     })
   },
-  bigSearch: true,
+  bigSearch: false,
   addRepo: false,
   searchTerm: '',
   reset: Ember.computed('repoFilter', function(){
