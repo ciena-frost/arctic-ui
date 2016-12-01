@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="70px" height="70px" viewBox="0 0 70 70" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="47" y="16" width="10" height="10"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="10" height="10" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Component-name">
+            <g id="Group">
+                <rect id="Rectangle" fill="#A1F6FF" x="0" y="0" width="70" height="70"></rect>
+                <ellipse id="Oval" stroke="#5DB3DF" cx="26" cy="28" rx="17" ry="17"></ellipse>
+                <polygon id="Polygon" stroke="#086A9D" points="45.5 41 54.5350369 47.5643386 51.0839599 58.1856614 39.9160401 58.1856614 36.4649631 47.5643386"></polygon>
+                <use id="Rectangle-2" stroke="#5D98AC" mask="url(#mask-2)" stroke-width="2" xlink:href="#path-1"></use>
+            </g>
+        </g>
+    </g>
+</svg>

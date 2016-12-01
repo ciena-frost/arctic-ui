@@ -1,0 +1,163 @@
+// Fix for Roboto font path
+$roboto-font-path: '../assets/';
+
+// Materialize styles
+@import "materialize";
+@import "ember-cli-materialize";
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+html, body.ember-application, body {
+  height: 100%;
+  overflow: hidden;
+  .ember-view {
+  }
+  .card.small{
+    font-size: 0.8em;
+    height: 90px;
+    min-width: 130px;
+    max-width: 300px;
+    padding-top: 8px;
+    padding-left: 8px;
+  }
+  .card.small.tall{
+    height: 130px;
+    width: 300px;
+  }
+  .card.small .card-content {
+    padding: 10px;
+    max-height: 100%;
+  }
+  .content {
+    height: inherit;
+    &.overflow {
+      height: 95VH;
+      overflow-y: scroll;
+      .row {
+        margin-bottom: 5rem;
+      }
+      .col{
+      }
+    }
+    .side-bar {
+      height: 100VH;
+      h5 {
+        font-size: 1.4rem;
+      }
+      .input-field {
+        input {
+          height: 2.8rem;
+        }
+      }
+    }
+  }
+  .nav-wrapper {
+    background-color: #26a69a;
+    background-image: url("images/G_artic_bg.svg");
+    box-shadow: 0;
+    background-position: bottom;
+    .brand-logo {
+      padding-left: 15px;
+    }
+  }
+
+  .card-title-main {
+    margin-top: auto;
+    margin-bottom: 0px;
+    padding: 0px;
+    text-transform:capitalize;
+    font-size: 1em;
+    font-weight: bold;
+    line-height: 10px;
+  }
+  .card-title-small {
+    margin-top: auto;
+    margin-bottom: 0px;
+    padding: 5px;
+    text-transform:capitalize;
+    font-weight: bold;
+    font-size: 1.3em;
+    line-height: 10px;
+
+  }
+  .card-action {
+    padding: 0px;
+    font-size: .8em
+  }
+  .main-search{
+    background: url("images/G_moutain1.svg") left no-repeat,
+                url("images/G_mountain2.svg") right bottom no-repeat,
+                url("images/G_artic_bg.svg") bottom;
+    font-size: 1em;
+    height: 30VH;
+    width: 100VW;
+  }
+  .large-text{
+    font-size: 2.0em
+  }
+  .search-bar{
+    padding: 0;
+    height: 47px;
+    min-width: 300px;
+    position: relative;
+    top: 0px;
+    outline: 2px solid teal;
+    border: 1px solid #cdcdcd;
+    border-color: rgba(0,0,0,.15);
+    background-color: white;
+  }
+  .search-bar-small{
+    padding: 0;
+    height: 47px;
+    min-width: 300px;
+
+  }
+  .modal{
+    max-height: 15VH;
+  }
+  .pagination {
+    font-size: 1em;
+    padding: 0px;
+    margin: 0px;
+    display: inline-flex;
+    font-size: 1em;
+    li{
+      i{
+        font-size: 1em;
+      }
+      a{
+        position: static;
+        border: 0;
+      }
+    }
+    .active{
+      a{
+        background-color: #65d0cb
+      }
+      padding-top: 0px;
+      background-color: white;
+    }
+
+  }
+  .source-icon{
+    opacity: 0.5;
+  }
+  .pill{
+    text-decoration:none;
+    color: white;
+  	font-size:9px;
+  	padding:0 3px;
+  	height: auto;
+  	display:inline-block;
+  	text-align:center;
+  	background-color:#DDDDDD;
+    border-radius: 7px;
+  }
+  .material-icon .tiny{
+    padding: 0px;
+  }
+
+  nav{
+    background-color: rgba(238, 110, 115, 0);
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.16), 0 0px 0px 0 rgba(0, 0, 0, 0.12);
+  }
+}

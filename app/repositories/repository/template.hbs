@@ -1,0 +1,65 @@
+{{#liquid-bind model class="toLeft-demo" as |newModel|}}
+<div class = "content row overflow">
+  <h4><i><a href='{{newModel.repository.link}}' target='_blank'>&nbsp;{{newModel.repository.id}}</a></i></h4>
+  &nbsp;Latest Version: {{newModel.repository.versions.lastObject.version}}<br />
+  &nbsp;Description: {{newModel.repository.description}}
+  {{md-tabs content=basicTabsContent selected=basicTabsSelection}}
+  {{#if (eq basicTabsSelection "dependencies")}}
+    <div class='row overflow'> <!--Dev and Dependencies-->
+      <div class='content col l12 m6 s8'>
+        <div class='row'> <!--Dependencies-->
+          <h5>Dependencies<br /></h5><div class=divider></div>
+              {{#each newModel.repository.versions.lastObject.dependencies as |dep|}}
+                {{dependency-card dep=dep cardTags='waves-effect waves-dark card small white z-depth-0'}}
+              {{/each}}
+        </div>
+        <div class ='row'> <!--DevDependencies-->
+            <h5>Developer Dependencies</h5><div class=divider></div>
+              {{#each newModel.repository.versions.lastObject.devdependencies as |dep|}}
+                {{dependency-card dep=dep cardTags='waves-effect waves-dark card small white z-depth-0'}}
+              {{/each}}
+        </div>
+      </div>
+    </div>
+  {{else if (eq basicTabsSelection "usedby")}}
+    {{#if newModel.isdependency.isdependencies}}
+      {{md-input value=depFilter icon="search tiny right" label='Search repositories by name or organization'}}
+      <div class="col l10 offset-l1">
+        {{#each isDepFilteredModel as |dep|}}
+          <div class='col s12 m6 l4'>
+            <div class = "wave-effect waves-dark card small tall white z-depth-0">
+              <div class="col l3">
+                {{#link-to 'repositories.repository' dep.id}}
+                  <img src={{repoIcon dep.organization}}  height=55px />
+                {{/link-to}}
+              </div>
+              <div class="col l9">
+                <div class="card-content black-text ">
+                  {{#link-to 'repositories.repository' dep.id}}
+                    <div class = "linked black-text">
+                      <span class="card-title-main black-text">{{dep.id}}</span><br />
+                      {{#each dep.versions.lastObject.dependencies as |rep|}}
+                        {{#if (eq rep.name newModel.repository.id)}}<span class="truncate">Version used: {{rep.version}} </span> Type: Dependency{{/if}}
+                      {{/each}}
+                      {{#each dep.versions.lastObject.devdependencies as |rep|}}
+                        {{#if (eq rep.name newModel.repository.id)}}<span class="truncate"> Version used: {{rep.version}} </span> Type:  DevDependency{{/if}}
+                      {{/each}}
+                        <br /><span class="truncate">by: {{dep.organization}}</span>
+                    </div>
+                  {{/link-to}}
+
+                  <a href='{{dep.link}}' target='_blank'>
+                      <img src={{imagePath dep.link}} height=15px />
+                  </a>
+
+                  <div class="card-action"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    {{/if}}
+  {{/if}}
+</div>
+{{/liquid-bind}}

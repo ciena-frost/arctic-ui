@@ -1,0 +1,27 @@
+<div class="content row">
+  <div class='side-bar col l2 m4 hide-on-small-and-down side-bar'> <!--SideBar-->
+    <form>
+      <h5>Refine Search:</h5>
+      <div class="divider"></div>
+      {{md-check name="Ciena Frost" checked=ciena-frost}}
+      {{md-check name="Ciena BluePlanet" checked=ciena-blueplanet}}
+      {{md-check name="BluePlanet Frost" checked=bp-frost}}
+      {{md-check name="BluePlanet UI Apps" checked=bp-ui-apps}}
+      <div class="divider"></div>
+      {{md-check name="Other" checked=otherOrg}}
+      <div class="divider"></div>
+    </form>
+  </div>
+  <div class='row'>
+    <div class='content col l10 m8 s12' style="height:550px;"> <!--Card Container-->
+      {{#liquid-bind currentPage class='toLeft-demo' as |currentPageModel|}}
+      {{#each currentPageModel as |repo|}}
+        {{repository-card action=smallSearch repo=repo version=repo.versions}}
+      {{/each}}
+      {{/liquid-bind}}
+    </div>
+    <div class='row'>
+      {{md-pagination min=1 max=repoPages.length current=page range=7}}
+    </div>
+  </div>
+</div>
